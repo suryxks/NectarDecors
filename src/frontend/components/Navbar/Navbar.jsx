@@ -3,8 +3,8 @@ import "./Navbar.css"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom'
+import { SearchBar } from '../Searchbar/SearchBar';
 const Navbar = () => {
     return (<div>
         <nav className="header-nav">
@@ -15,20 +15,12 @@ const Navbar = () => {
             </div>
             <SearchBar/>
             <div className="actions">
-                <Link to='/wishlist'><FavoriteBorderIcon /></Link>
-                <Link to='/cart'><ShoppingBagIcon /></Link>
-                <Link to='/'><PermIdentityIcon /></Link>
+                <Link to='/wishlist'><FavoriteBorderIcon className="icon"/></Link>
+                <Link to='/cart'><ShoppingBagIcon className="icon"/></Link>
+                <Link to='/'><PermIdentityIcon className="icon"/></Link>
             </div>
         </nav>
     </div>)
 }
 
-const SearchBar = () => {
-    return (
-        <div className="search-bar">
-            <input type="text" />
-            <SearchIcon />
-        </div>
-    )
-}
 export default Navbar;
