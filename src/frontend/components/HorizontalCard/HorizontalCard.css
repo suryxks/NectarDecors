@@ -1,0 +1,64 @@
+html{
+    --shadow:2px 4px 8px hsl(0deg 0% 0% / 0.25);
+}
+.horizontal-card {
+    display: flex;
+    max-width: 40rem;
+    border: 2px solid var(--border);
+    margin: 3rem;
+}
+.details {
+    margin: 1rem;
+    text-align: left;
+}
+
+.details>h3 {
+    margin: 0;
+}
+
+.header-nav {
+    background: var(--white);
+    isolation: isolate;
+    z-index: 1;
+}
+
+.horizontal-card-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn-cta-outline {
+    font-size: 1.5rem;
+    background-color: var(--white);
+    color: var(--cta);
+    border: none;
+    box-shadow: var(--shadow);
+    border-radius: 0.2rem;
+    padding: 0;
+    width: 70%;
+    margin: 0.5rem auto;
+    padding: 0.3rem 0.6rem;
+}
+
+.horizontal-card-btn>.btn-cta {
+    margin: 0rem auto;
+    border: none;
+    width: fit-content;
+    padding: 0.3rem 0.6rem;
+    width: 70%;
+}
+
+.btn-cta-outline:hover {
+    background-color: var(--cta);
+    color: var(--white);
+}
+
+@media(max-width:550px) {
+    .horizontal-card>img {
+        max-width: 150px;
+        object-fit: cover;
+    }
+}

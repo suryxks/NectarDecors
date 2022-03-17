@@ -15,6 +15,7 @@ export const products = [{
     categoryName: "Plants",
     discount: "10%",
     Stockquantity: '10',
+    featured: true,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647232619/NectarDecors/Plants/2a60d462-66b8-42d0-b940-d2a768d9c4431634735175699DekorlySetOf4GreenWhiteDecorativeBonsaiPlantsWithPots1_qyhyis.jpg',
   },
   {
@@ -25,6 +26,7 @@ export const products = [{
     categoryName: "Plants",
     discount: "25%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647235257/NectarDecors/Plants/5b20ab5b-9212-4311-840d-d6b879db981a1645262721968ArtificialFlowersandPlants1_pes1hg.jpg',
   },
   {
@@ -35,6 +37,7 @@ export const products = [{
     categoryName: "Plants",
     discount: "15%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647235334/NectarDecors/Plants/e5967ea8-741c-4ae9-900e-8e8ba58ca80b1634654664140ArtificialFlowersandPlants1_rznzzn.jpg',
 
   },
@@ -47,6 +50,7 @@ export const products = [{
     categoryName: "Plants",
     discount: "10%",
     Stockquantity: '10',
+    featured: true,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647235377/NectarDecors/Plants/08862805-1da6-4407-8486-436e4d20b6541535625407814-OddCroft-Green--Brown-Artificial-Bonsai-Tree-with-Pot-5981535625407632-1_qltckn.jpg',
 
   },
@@ -58,6 +62,7 @@ export const products = [{
     categoryName: "Plants",
     discount: "15%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647240198/NectarDecors/Plants/f5c0049a-0a46-46a3-a0e9-6eeabda8bdab1634652912071ArtificialFlowersandPlants1_hw8rfg.jpg',
 
   },
@@ -69,6 +74,7 @@ export const products = [{
     categoryName: "Plants",
     discount: "20%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647235513/NectarDecors/Plants/3764547c-04b5-41e4-a523-7902558eebea1640244339392Green_Orange_Hansraj1_q65cyf.jpg',
 
   },
@@ -80,6 +86,7 @@ export const products = [{
     categoryName: "Wall decors",
     discount: "70%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647225202/NectarDecors/2b9a2f00-7844-478f-acbc-a58457937bfb1528792670861-na-421528792670697-1_vrxhhj.jpg',
 
   },
@@ -91,6 +98,7 @@ export const products = [{
     categoryName: "Wall decors",
     discount: "50%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647225459/NectarDecors/9e406c0a-9ee6-407d-a297-d59dafd63a341628394846675-Golden-Peacock-White-Circular-LED-Table-Top-Photo-Frame-6891-1_rntnmu.jpg',
 
   },
@@ -102,6 +110,7 @@ export const products = [{
     categoryName: "Wall decors",
     discount: "20%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647225609/NectarDecors/Photo%20frames/74130dc1-e094-4086-97b9-e8ccbabb4b631616665873132-1_yip29b.jpg',
 
   },
@@ -113,6 +122,7 @@ export const products = [{
     categoryName: "Wall decors",
     discount: "20%",
     Stockquantity: '10',
+    featured: true,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647225695/NectarDecors/Photo%20frames/37ca6ef4-34ef-4fc9-bd48-4528d3d345941538821628857-Art-Street-White-Flower-Table-Photo-Frame-4331538821628766-1_rzv6ub.jpg',
 
   },
@@ -124,6 +134,7 @@ export const products = [{
     categoryName: "Wall decors",
     discount: "20%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647229290/NectarDecors/Photo%20frames/b5fc076f-b094-4956-8679-d962eba8eeb61527509319846-Random-Set-of-06-photo-frames-WITH-MDF-flowers-plaque-4X6-4PCS--5x7-2pcs-BLACK-2611527509319705-1_eva4xo.jpg',
 
   },
@@ -135,6 +146,7 @@ export const products = [{
     categoryName: "Wall shelves",
     discount: "60%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647232373/NectarDecors/Wall%20decors/11521266748993-na-6971521266748832-1_ulvwhi.webp',
 
   },
@@ -146,6 +158,7 @@ export const products = [{
     categoryName: "Wall shelves",
     discount: "30%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647232333/NectarDecors/Wall%20decors/1c4d229c-5fd4-4b63-8dc5-4e01c9103ab61600992839880-1_fbcom5.jpg',
 
   },
@@ -157,6 +170,7 @@ export const products = [{
     categoryName: "Wall shelves",
     discount: "50%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647232419/NectarDecors/Wall%20decors/4e3ae2a2-7acc-4654-a8c8-142ff4feb61f1621861667598-1_jvzfyd.jpg',
 
   },
@@ -168,6 +182,7 @@ export const products = [{
     categoryName: "Wall shelves",
     discount: "40%",
     Stockquantity: '10',
+    featured: true,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647232462/NectarDecors/Wall%20decors/72da154c-ee29-46ea-80f8-b611a3e8e06d1621925018933-1_pgil2o.jpg',
 
   },
@@ -179,6 +194,7 @@ export const products = [{
     categoryName: "Wall shelves",
     discount: "40%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647232503/NectarDecors/Wall%20decors/dbd349e7-1ed5-4dbc-b982-473f0e21fd171632234015927WallDecor1_a3zgok.jpg',
 
   },
@@ -191,6 +207,7 @@ export const products = [{
     categoryName: "Clocks",
     discount: "30%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647229400/NectarDecors/Clocks/99d0d859-79d4-4a23-9213-c6b3787344121634990179319ZANIBOUnisexMaroonSolid1_iddcrn.jpg',
 
   },
@@ -202,6 +219,7 @@ export const products = [{
     categoryName: "Clocks",
     discount: "20%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647229744/NectarDecors/Clocks/10908c1a-3da9-4d4b-9358-d9fe938a1a511569703005970-1_r6hr9f.jpg',
 
   },
@@ -213,6 +231,7 @@ export const products = [{
     categoryName: "Clocks",
     discount: "50%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647229833/NectarDecors/Clocks/698efd38-2dcb-4ab5-bb17-d4b33c0c815e1617082495951-1_hmadux.jpg',
 
   },
@@ -224,6 +243,7 @@ export const products = [{
     categoryName: "Clocks",
     discount: "15%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647229894/NectarDecors/Clocks/95ce1c3a-628b-4fc5-a481-e5ffaa3032561644848018446MARKET99UnisexBlueSolid1_k7gnm3.jpg',
 
   },
@@ -235,6 +255,7 @@ export const products = [{
     categoryName: "Wall decors",
     discount: "50%",
     Stockquantity: '10',
+    featured: false,
     imageUrl: 'https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647229937/NectarDecors/Clocks/7ae2b062-dba7-4f65-8c6a-a7489705a6661599605137922-1_fxithi.jpg',
 
   },
