@@ -3,22 +3,23 @@ import './Home.css';
 import { Navbar, HorizontalCard } from '../../components';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { ProductionQuantityLimitsRounded } from '@mui/icons-material';
+
+import { useData } from '../../contexts/DataContext';
 const Home = () => {
-    const [categories, setCategories] = useState([]);
-    const [featured, setFeatured] = useState([]);
-    useEffect(() => {
-        (async () => {
-            const { data: categoriesdata } = await axios.get("/api/categories");
+    // const [categories, setCategories] = useState([]);
+    // const [featured, setFeatured] = useState([]);
+    // useEffect(() => {
+    //     (async () => {
+    //         const { data: categoriesdata } = await axios.get("/api/categories");
 
-            setCategories(categoriesdata.categories);
-            const { data: productsData } = await axios.get("/api/products");
-            setFeatured(
-                productsData.products.filter((item) => item.featured === true)
-            );
-        })();
-    }, []);
-
+    //         setCategories(categoriesdata.categories);
+    //         const { data: productsData } = await axios.get("/api/products");
+    //         setFeatured(
+    //             productsData.products.filter((item) => item.featured === true)
+    //         );
+    //     })();
+    // }, []);
+  const {categories,featured}=useData();
     return (
         <div>
             <Navbar />
