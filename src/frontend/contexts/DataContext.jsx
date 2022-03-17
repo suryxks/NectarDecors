@@ -6,24 +6,10 @@ const DataProvider = ({ children }) => {
     const [categories, setCategories] = useState([]);
     const [featured, setFeatured] = useState([]);
     const [products,setProducts]=useState([]);
-    const [err,setErr]=useState('');
-    useEffect(() => {
-        (async () => {
-           try{
-            const { data: categoriesdata } = await axios.get("/api/categories");
-
-            setCategories(categoriesdata.categories);
-            const { data: productsData } = await axios.get("/api/products");
-            setProducts(productsData);
-            setFeatured(productsData.products.filter((item) => item.featured === true));
-           }catch(e){
-                 setErr(e);  
-           }
-        })();
-    }, []);
+  
 
     return (
-        <DataContext.Provider value={{categories,featured,products}}>
+        <DataContext.Provider value={{categories,setCategories,setFeatured,setProducts,featured,products}}>
             {children}
         </DataContext.Provider>
     )

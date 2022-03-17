@@ -6,20 +6,30 @@ import axios from 'axios';
 
 import { useData } from '../../contexts/DataContext';
 const Home = () => {
-    // const [categories, setCategories] = useState([]);
-    // const [featured, setFeatured] = useState([]);
-    // useEffect(() => {
-    //     (async () => {
-    //         const { data: categoriesdata } = await axios.get("/api/categories");
+    const [err, setErr] = useState('')
+    const { categories, featured, setFeatured, setCategories } = useData();
+    useEffect(() => {
+        getCategories();
+        getFeatured();
+    }, [])
+    const getCategories = async () => {
+        try {
+            const { data: categoriesdata, status } = await axios.get("/api/categories");
+            status === 200 ? setCategories([...categoriesdata.categories]) : setCategories([]);
+        } catch (err) {
+            setErr("server not responding")
+        }
+    }
+    const getFeatured = async () => {
+        try {
+            const { data: productsData, status } = await axios.get("/api/products");
 
-    //         setCategories(categoriesdata.categories);
-    //         const { data: productsData } = await axios.get("/api/products");
-    //         setFeatured(
-    //             productsData.products.filter((item) => item.featured === true)
-    //         );
-    //     })();
-    // }, []);
-  const {categories,featured}=useData();
+            status === 200 ? setFeatured(productsData.products.filter((item) => item.featured === true)) : setFeatured([]);
+        } catch (err) {
+            setErr("server not responding")
+        }
+    }
+
     return (
         <div>
             <Navbar />
