@@ -9,25 +9,25 @@ export const categories = [
   {
     _id: uuid(),
     categoryName: "Plants",
-    description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+    bannerImage:'https://res.cloudinary.com/dxdefqayz/image/upload/v1647432583/NectarDecors/plants-category-ecom_lo6wvv.jpg',
+    
   },
   {
     _id: uuid(),
     categoryName: "Wall decors",
-    description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+    bannerImage:'https://res.cloudinary.com/dxdefqayz/image/upload/v1647432598/NectarDecors/walldecor-ecom_tu1vsj.jpg',
+   
   },
   {
     _id: uuid(),
     categoryName: "Clocks",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+    bannerImage:'https://res.cloudinary.com/dxdefqayz/image/upload/v1647432566/NectarDecors/clock-ecom_yplfvs.jpg',
+    
   },
   {
     _id: uuid(),
     categoryName: "Wall shelves",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+    bannerImage:'https://res.cloudinary.com/dxdefqayz/image/upload/v1647432608/NectarDecors/wall-shelves_wcru5p.jpg',
+    
   },
 ];

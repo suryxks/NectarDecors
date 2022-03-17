@@ -1,3 +1,3 @@
 import Navbar from "./Navbar/Navbar";
-
-export  {Navbar} ;
+import HorizontalCard from "./HorizontalCard/HorizontalCard";
+export  {Navbar,HorizontalCard} ;
