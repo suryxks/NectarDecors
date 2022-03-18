@@ -1,0 +1,20 @@
+.vertical-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 14rem;
+    border: 2px var(--border);
+    box-shadow: var(--shadow);
+    border-radius: 0.3rem;
+    margin: 1rem;
+  }
+  
+  .btn-cta-vertical {
+    width: 100%;
+    font-size: 1.5rem;
+    display: inline-block;
+    background-color: var(--cta);
+    color: var(--white);
+    border: none;
+    border-radius: 0.2rem;
+  }
+  
