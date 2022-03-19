@@ -4,6 +4,7 @@ import { Navbar } from "../../components";
 import { useData } from "../../contexts/DataContext";
 import axios from "axios";
 import { ProductListingCard } from "../../components/ProductListingCard/ProductListingCard";
+import { ProductFilters } from "./ProductFilters";
 const ProductListing = () => {
   const [err, setErr] = useState("");
   const { products, setProducts } = useData();
@@ -22,8 +23,10 @@ const ProductListing = () => {
     }
   };
   return (
-    <>
-      <Navbar />
+    <div className="products-page">
+      <Navbar className="nav-bar" />
+      <ProductFilters className="filters" />
+
       <div className="product-listing">
         {products.map((product) => {
           const {
@@ -50,7 +53,7 @@ const ProductListing = () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 export default ProductListing;
