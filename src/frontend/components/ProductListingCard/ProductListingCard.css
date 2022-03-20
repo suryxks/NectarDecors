@@ -34,7 +34,7 @@
   border-radius: 50%;
   padding: 0.5rem;
   background-color: var(--white);
-  transform: translateX(11rem) translateY(-18px) scale(1) rotate(0deg)
+  transform: translateX(8rem) translateY(-18px) scale(1) rotate(0deg)
     translateZ(0px);
 }
 .wishlist-icon:hover {
@@ -42,7 +42,7 @@
   border-radius: 50%;
   padding: 0.5rem;
   background-color: var(--white);
-  transform: translateX(11rem) translateY(-18px) scale(1) rotate(20deg)
+  transform: translateX(8rem) translateY(-18px) scale(1) rotate(20deg)
     translateZ(0px);
   cursor: pointer;
 }
