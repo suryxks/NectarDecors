@@ -1,7 +1,12 @@
 import { createContext, useContext, useReducer } from "react";
 import { useData } from "./DataContext.jsx";
 import { productsFilterReducer } from "../Reducers/productsFilterReducer";
-import { filterByCategory, filterByRating } from "../Utils";
+import {
+  filterByCategory,
+  filterByRating,
+  sortByPrice,
+  filterByPrice
+} from "../Utils";
 const ProductContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
@@ -21,17 +26,18 @@ export const ProductsProvider = ({ children }) => {
     price: {
       lowToHigh: false,
       highToLow: false
-    }
+    },
+    priceRangeSlider: 1000
   };
   const { products } = useData();
   const [filter, dispatch] = useReducer(productsFilterReducer, initialState);
-  const filterdByCategory = filterByCategory(products, filter);
+  const filteredByPrice = filterByPrice(products, filter);
+  const filterdByCategory = filterByCategory(filteredByPrice, filter);
   const filteredByRating = filterByRating(filterdByCategory, filter);
 
+  const filterdProducts = sortByPrice(filteredByRating, filter);
   return (
-    <ProductContext.Provider
-      value={{ filter, dispatch, products, filterdByCategory }}
-    >
+    <ProductContext.Provider value={{ filter, dispatch, filterdProducts }}>
       {children}
     </ProductContext.Provider>
   );

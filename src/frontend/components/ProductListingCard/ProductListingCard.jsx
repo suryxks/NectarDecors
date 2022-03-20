@@ -7,7 +7,8 @@ export const ProductListingCard = ({
   title,
   price,
   discount,
-  description
+  description,
+  Originalprice
 }) => {
   return (
     <div className="vertical-card" key={_id}>
@@ -17,13 +18,8 @@ export const ProductListingCard = ({
         <h3 className="heading-sm active">{title}</h3>
 
         <div className="price">
-          <h4 className="heading-xs">{`₹${
-            Number(price) -
-            Math.floor(
-              (Number(price) * Number(discount.replace("%", ""))) / 100
-            )
-          }`}</h4>
-          <h4 className="strike heading-xs">{`₹${price}`}</h4>
+          <h4 className="heading-xs">{`₹${price}`}</h4>
+          <h4 className="strike heading-xs">{`₹${Originalprice}`}</h4>
           <h4 className="discount heading-xs">{`(${discount})`}</h4>
         </div>
 

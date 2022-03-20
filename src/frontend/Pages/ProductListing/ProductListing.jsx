@@ -6,8 +6,8 @@ import { ProductListingCard } from "../../components/ProductListingCard/ProductL
 import { ProductFilters } from "./ProductFilters";
 
 const ProductListing = () => {
-  const { products, dispatch, filter, filterdByCategory } = useProducts();
-  console.log(filterdByCategory);
+  const { dispatch, filter, filterdProducts } = useProducts();
+
   return (
     <div className="products-page">
       <Navbar className="nav-bar" />
@@ -18,7 +18,7 @@ const ProductListing = () => {
       />
 
       <div className="product-listing">
-        {filterdByCategory.map((product) => {
+        {filterdProducts.map((product) => {
           const {
             _id,
             title,
@@ -28,7 +28,8 @@ const ProductListing = () => {
             discount,
             Stockquantity,
             featured,
-            imageUrl
+            imageUrl,
+            Originalprice
           } = product;
 
           return (
@@ -39,6 +40,7 @@ const ProductListing = () => {
               price={price}
               discount={discount}
               description={description}
+              Originalprice={Originalprice}
             />
           );
         })}

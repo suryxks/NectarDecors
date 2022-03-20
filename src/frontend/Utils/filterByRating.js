@@ -1,16 +1,18 @@
-export const filterByRating = (filterdByCategory, filter) => {
+export const filterByRating = (products, filter) => {
   const { rating } = filter;
+
   const { fourStars, threeStars, twoStars, oneStar } = rating;
   if (oneStar) {
-    return filterdByCategory;
+    return products;
   }
   if (twoStars) {
-    return filterdByCategory.filter((product) => Number(product.rating) >= 2);
+    return products.filter((product) => Number(product.rating) >= 2);
   }
   if (threeStars) {
-    return filterdByCategory.filter((product) => Number(product.rating) >= 3);
+    return products.filter((product) => Number(product.rating) >= 3);
   }
   if (fourStars) {
-    return filterdByCategory.filter((product) => Number(product.rating) >= 4);
+    return products.filter((product) => Number(product.rating) >= 4);
   }
+  return products;
 };

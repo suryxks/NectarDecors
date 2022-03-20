@@ -1,45 +1,60 @@
 export const productsFilterReducer = (state, action) => {
-  const { category, rating, price } = state;
+  const { category, rating, price, priceRangeSlider } = state;
   switch (action.type) {
+    case "CLEAR": {
+      return {
+        category: {
+          plants: false,
+          wallDecor: false,
+          clocks: false,
+          wallShelves: false
+        },
+        rating: {
+          fourStars: false,
+          threeStars: false,
+          twoStars: false,
+          oneStar: false
+        },
+        price: {
+          lowToHigh: false,
+          highToLow: false
+        },
+        priceRangeSlider: 1000
+      };
+    }
     case "PRICE_LOW_TO_HIGH":
       return {
-        category,
-        rating,
+        ...state,
         price: { lowToHigh: true, highToLow: false }
       };
     case "PRICE_HIGH_TO_LOW": {
       return {
-        category,
-        rating,
+        ...state,
         price: { lowToHigh: false, highToLow: true }
       };
     }
     case "CATEGORY_PLANTS": {
       return {
-        category: { ...category, plants: !category.plants },
-        rating,
-        price
+        ...state,
+        category: { ...category, plants: !category.plants }
       };
     }
     case "CATEGORY_WALLDECOR": {
       return {
-        category: { ...category, wallDecor: !category.wallDecor },
-        rating,
-        price
+        ...state,
+        category: { ...category, wallDecor: !category.wallDecor }
       };
     }
     case "CATEGORY_CLOCKS": {
       return {
-        category: { ...category, clocks: !category.clocks },
-        rating,
-        price
+        ...state,
+        category: { ...category, clocks: !category.clocks }
       };
     }
     case "CATEGORY_WALLSHELVES": {
       return {
-        category: { ...category, wallShelves: !category.wallShelves },
-        rating,
-        price
+        ...state,
+        category: { ...category, wallShelves: !category.wallShelves }
       };
     }
     case "RATING_FOUR_STARS": {
@@ -85,6 +100,9 @@ export const productsFilterReducer = (state, action) => {
           oneStar: true
         }
       };
+    }
+    case "PRICE_SLIDER": {
+      return { ...state, priceRangeSlider: action.payload };
     }
     default:
       return { ...state };

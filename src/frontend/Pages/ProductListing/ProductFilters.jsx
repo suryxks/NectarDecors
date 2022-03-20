@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProductFilters.css";
 export const ProductFilters = ({ filterValues, dispatch }) => {
-  const { category, rating, price } = filterValues;
+  const { category, rating, price, priceRangeSlider } = filterValues;
+
   return (
     <aside class="filters">
-      <h2 class="heading-md">Filters</h2>
+      <div className="filter-header">
+        <h2 class="heading-md text-left ">Filters</h2>
+        <button
+          className="clear-btn text-sm"
+          onClick={() => dispatch({ type: "CLEAR" })}
+        >
+          Clear
+        </button>
+      </div>
       <div class="filter-wrapper">
-        <h3 class="heading-md">Category</h3>
+        <h3 class="heading-md text-left active">Category</h3>
         <div class="filter-value filter">
           <label for="category">
             <input
@@ -48,7 +57,7 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
       </div>
 
       <div class="filter-wrapper">
-        <h3 class="heading-md">Rating</h3>
+        <h3 class="heading-md text-left active">Rating</h3>
         <div class="filter-value filter">
           <label for="rating">
             <input
@@ -90,7 +99,7 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
       </div>
 
       <div class="filter-wrapper">
-        <h3 class="heading-md">Filter</h3>
+        <h3 class="heading-md text-left active">Sort</h3>
         <div class="filter-value filter">
           <label for="price-filter">
             <input
@@ -99,7 +108,7 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
               checked={price.lowToHigh}
               onChange={() => dispatch({ type: "PRICE_LOW_TO_HIGH" })}
             />{" "}
-            Price - High to Low
+            Price - Low to High
           </label>
           <label for="price-filter">
             <input
@@ -108,16 +117,29 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
               checked={price.highToLow}
               onChange={() => dispatch({ type: "PRICE_HIGH_TO_LOW" })}
             />{" "}
-            Price - Low to High
+            Price -High to Low
           </label>
         </div>
       </div>
       <div class="filter-wrapper">
-        <h3 class="heading-md">Price</h3>
+        <h3 class="heading-md text-left active">Price Range</h3>
         <div class="filter-value filter">
           <label>
-            <input type="range" />
-            1000
+            <label for="price">{`₹1 to ₹${priceRangeSlider}`}</label>
+            <input
+              type="range"
+              id="price"
+              name="price"
+              min="1"
+              max="2500"
+              value={priceRangeSlider}
+              onChange={(e) => {
+                dispatch({
+                  type: "PRICE_SLIDER",
+                  payload: e.target.value
+                });
+              }}
+            />
           </label>
         </div>
       </div>
