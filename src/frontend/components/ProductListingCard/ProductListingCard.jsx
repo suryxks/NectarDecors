@@ -1,6 +1,7 @@
 import React from "react";
 import "./ProductListingCard.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import Rating from "@mui/material/Rating";
 export const ProductListingCard = ({
   _id,
   imageUrl,
@@ -8,6 +9,7 @@ export const ProductListingCard = ({
   price,
   discount,
   description,
+  rating,
   Originalprice
 }) => {
   return (
@@ -22,7 +24,12 @@ export const ProductListingCard = ({
           <h4 className="strike heading-xs">{`₹${Originalprice}`}</h4>
           <h4 className="discount heading-xs">{`(${discount})`}</h4>
         </div>
-
+        <Rating
+          name="half-rating"
+          defaultValue={rating}
+          precision={0.1}
+          readOnly
+        />
         <div className="horizontal-card-btn">
           <button className="btn-cta-vertical">Add to cart</button>
         </div>

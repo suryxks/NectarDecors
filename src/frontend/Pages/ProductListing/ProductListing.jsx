@@ -29,6 +29,7 @@ const ProductListing = () => {
             Stockquantity,
             featured,
             imageUrl,
+            rating,
             Originalprice
           } = product;
 
@@ -41,6 +42,7 @@ const ProductListing = () => {
               discount={discount}
               description={description}
               Originalprice={Originalprice}
+              rating={rating}
             />
           );
         })}
