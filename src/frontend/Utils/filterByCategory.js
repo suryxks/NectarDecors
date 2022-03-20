@@ -1,10 +1,8 @@
 export const filterByCategory = (products, filter) => {
-  console.log(products);
   const { category } = filter;
 
   const { plants, wallDecor, clocks, wallShelves } = category;
-  console.log("plants", plants, "walldecors", wallDecor);
-  console.log(category, "from filter");
+
   const PlantsContainer = products.filter(
     (product) => product.categoryName === "Plants"
   );
@@ -17,8 +15,6 @@ export const filterByCategory = (products, filter) => {
   const WallShelvesContainer = products.filter(
     (product) => product.categoryName === "Wall shelves"
   );
-  console.log(PlantsContainer);
-  console.log(WallDecorContainer);
 
   let filteredList = [];
   if (

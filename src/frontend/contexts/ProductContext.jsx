@@ -1,7 +1,7 @@
 import { createContext, useContext, useReducer } from "react";
 import { useData } from "./DataContext.jsx";
 import { productsFilterReducer } from "../Reducers/productsFilterReducer";
-import { filterByCategory } from "../Utils/filterByCategory";
+import { filterByCategory, filterByRating } from "../Utils";
 const ProductContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
@@ -26,7 +26,8 @@ export const ProductsProvider = ({ children }) => {
   const { products } = useData();
   const [filter, dispatch] = useReducer(productsFilterReducer, initialState);
   const filterdByCategory = filterByCategory(products, filter);
-  console.log(filterdByCategory, "from context", products, filter);
+  const filteredByRating = filterByRating(filterdByCategory, filter);
+
   return (
     <ProductContext.Provider
       value={{ filter, dispatch, products, filterdByCategory }}
