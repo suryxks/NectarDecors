@@ -1,0 +1,21 @@
+.filter-value {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  align-items: flex-start;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  grid-area: filters;
+}
+
+.filter {
+  accent-color: var(--cta);
+}
+
+.filter-wrapper > h3 {
+  margin: 0;
+}
