@@ -5,14 +5,17 @@ import { useAuth } from "../../contexts/AuthContext.jsx";
 import axios from "axios";
 
 export const Signin = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formValues, setFormValues] = useState({
+    email: "",
+    password: ""
+  });
+  const { email, password } = formValues;
+
   const navigate = useNavigate();
   const { setAuthState } = useAuth();
   const loginHandler = async (Logincredentials) => {
     try {
       const response = await axios.post("/api/auth/login", Logincredentials);
-      console.log(response.data);
 
       if (response.status === 200) {
         const { foundUser, encodedToken } = await response.data;
@@ -46,7 +49,7 @@ export const Signin = () => {
             name="email"
             value={email}
             onChange={(e) => {
-              setEmail(e.target.value);
+              setFormValues((state) => ({ ...state, email: e.target.value }));
             }}
           />
           <label
@@ -60,7 +63,10 @@ export const Signin = () => {
             name="password"
             value={password}
             onChange={(e) => {
-              setPassword(e.target.value);
+              setFormValues((state) => ({
+                ...state,
+                password: e.target.value
+              }));
             }}
           />
           <div className="form-accept">
