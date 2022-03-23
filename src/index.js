@@ -6,18 +6,20 @@ import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
 import { DataProvider } from "../src/frontend/contexts/DataContext.jsx";
 import { ProductsProvider } from "../src/frontend/contexts/ProductContext.jsx";
-
+import { AuthProvider } from "../src/frontend/contexts/AuthContext";
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <DataProvider>
-        <ProductsProvider>
-          <App />
-        </ProductsProvider>
-      </DataProvider>
+      <AuthProvider>
+        <DataProvider>
+          <ProductsProvider>
+            <App />
+          </ProductsProvider>
+        </DataProvider>
+      </AuthProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
