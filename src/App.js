@@ -2,7 +2,7 @@ import "./App.css";
 
 import {
   Approutes
-} from "./frontend/components";
+} from "./components";
 
 function App() {
   return (

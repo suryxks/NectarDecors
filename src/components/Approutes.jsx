@@ -6,7 +6,7 @@ import {
   WishList,
   Signin,
   Signup
-} from "../../frontend/Pages";
+} from "../Pages";
 
 const Approutes = () => {
   return (
