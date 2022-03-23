@@ -24,10 +24,8 @@ const Navbar = () => {
             onClick={() => {
               if (isAuthenticated()) {
                 logout();
-                navigate("/signin");
-              } else {
-                navigate("/signin");
               }
+              navigate("/signin");
             }}
           >
             {isAuthenticated() ? "Logout" : "Login"}

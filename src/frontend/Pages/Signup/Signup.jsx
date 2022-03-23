@@ -35,7 +35,7 @@ export const Signup = () => {
   return (
     <div>
       <Navbar />
-      <h1>Signup wip ....</h1>
+
       <div className="form-container display">
         <form
           className="form-grp"
