@@ -1,14 +1,33 @@
 import { useState, useEffect } from "react";
 import { Navbar } from "../../components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import axios from "axios";
 import "./Signup.css";
 export const Signup = () => {
+  const navigate = useNavigate();
+  const { setAuthState } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const signupHandler = async (credentials) => {
-    const { data } = axios.post("/api/auth/signup", credentials);
-    console.log(data);
+  const signupHandler = async (email, password) => {
+    try {
+      const { data } = await axios.post(`/api/auth/signup`, {
+        email: email,
+        password: password
+      });
+      const { createdUser, encodedToken } = data;
+      setAuthState({
+        token: encodedToken,
+        userInfo: createdUser
+      });
+
+      navigate("/");
+
+      localStorage.setItem("token", encodedToken);
+      localStorage.setItem("userInfo", createdUser);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div>
@@ -21,7 +40,7 @@ export const Signup = () => {
             e.preventDefault();
           }}
         >
-          <label className="heading-md fw-bold active text-left " for="email">
+          <label className="heading-md fw-bold  text-left " for="email">
             Email address
           </label>
           <input
@@ -33,7 +52,7 @@ export const Signup = () => {
               setEmail(e.target.value);
             }}
           />
-          <label className="heading-md fw-bold active text-left" for="password">
+          <label className="heading-md fw-bold  text-left" for="password">
             Enter Password
           </label>
           <input
@@ -52,7 +71,7 @@ export const Signup = () => {
             className="btn-cta"
             onClick={(e) => {
               e.preventDefault();
-              signupHandler({ email, password });
+              signupHandler(email, password);
             }}
           >
             Sign Up

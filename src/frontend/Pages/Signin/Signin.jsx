@@ -1,35 +1,87 @@
 import { Navbar } from "../../components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext.jsx";
+import axios from "axios";
+
 export const Signin = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const { setAuthState } = useAuth();
+  const loginHandler = async (Logincredentials) => {
+    try {
+      const response = await axios.post("/api/auth/login", Logincredentials);
+      console.log(response.data);
+
+      if (response.status === 200) {
+        const { foundUser, encodedToken } = await response.data;
+        localStorage.setItem("token", JSON.stringify(encodedToken));
+        localStorage.setItem("userInfo", JSON.stringify(foundUser));
+        setAuthState({
+          token: encodedToken,
+          userInfo: foundUser
+        });
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <Navbar />
-      <h1>Sign in wip...</h1>
-      <div class="form-container display">
-        <form class="form-grp">
-          <label class="heading-md fw-bold active text-left" for="email">
+
+      <div className="form-container display">
+        <form className="form-grp">
+          <label
+            className="heading-md fw-bold active text-left"
+            htmlFor="email"
+          >
             Email address
           </label>
           <input
             type="email"
             placeholder="johndoe@something.com"
             name="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
           />
-          <label class="heading-md fw-bold active text-left" for="password">
+          <label
+            className="heading-md fw-bold active text-left"
+            htmlFor="password"
+          >
             Enter Password
           </label>
-          <input type="password" name="password" />
-          <div class="form-accept">
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+          <div className="form-accept">
             <div>
               <input type="checkbox" />
               <label>Remember Me</label>
             </div>
             <a href="#">Forgot Password?</a>
           </div>
-          <button class="btn-cta">Login</button>
+          <button
+            className="btn-cta"
+            onClick={(e) => {
+              e.preventDefault();
+              loginHandler({ email, password });
+            }}
+          >
+            Login
+          </button>
         </form>
-        <Link to="/signup" class="text-sm fw-semibold login-link">
-          Create New account >
+        <Link to="/signup" className="text-sm fw-semibold login-link">
+          Create New account
         </Link>
       </div>
     </div>
