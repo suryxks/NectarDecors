@@ -1,0 +1,45 @@
+.form-grp {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: center;
+  margin: auto;
+}
+.form-grp > input {
+  font-size: 1rem;
+  outline: none;
+  border: 2px solid var(--cta);
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  margin: 0.8rem;
+}
+.display {
+  max-width: fit-content;
+}
+.form-grp > button {
+  margin: 1rem auto;
+}
+
+.form-accept {
+  display: flex;
+  justify-content: space-between;
+  accent-color: var(--cta);
+  align-items: center;
+}
+.form-accept-signup {
+  accent-color: var(--cta);
+}
+.login-link {
+  text-decoration: none;
+  color: var(--cta);
+}
+.login-link:visited {
+  text-decoration: none;
+  color: var(--cta);
+}
+.form-accept > a {
+  text-decoration: none;
+}
+.form-container {
+  min-width: 30rem;
+}

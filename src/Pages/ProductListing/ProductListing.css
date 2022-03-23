@@ -1,0 +1,33 @@
+.product-listing {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1rem;
+  grid-area: listing;
+}
+.products-page {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  grid-template-rows: min-content max-content;
+  grid-template-areas:
+    "header header"
+    "filters listing";
+}
+.nav-bar {
+  grid-area: header;
+}
+.filters {
+  grid-area: filters;
+}
+@media (max-width: 550px) {
+  /* Phones */
+
+  .product-listing {
+    margin: 0.2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.3rem;
+    grid-area: listing;
+    place-items: center;
+  }
+}
