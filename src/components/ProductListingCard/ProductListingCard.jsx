@@ -10,7 +10,8 @@ export const ProductListingCard = ({
   discount,
   description,
   rating,
-  Originalprice
+  Originalprice,
+  onAddtocart
 }) => {
   return (
     <div className="vertical-card" key={_id}>
@@ -31,7 +32,7 @@ export const ProductListingCard = ({
           readOnly
         />
         <div className="horizontal-card-btn">
-          <button className="btn-cta-vertical">Add to cart</button>
+          <button className="btn-cta-vertical" onClick={onAddtocart}>Add to cart</button>
         </div>
       </div>
     </div>

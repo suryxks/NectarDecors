@@ -4,10 +4,12 @@ import { Navbar } from "../../components";
 import { useProducts } from "../../contexts/ProductContext";
 import { ProductListingCard } from "../../components/ProductListingCard/ProductListingCard";
 import { ProductFilters } from "./ProductFilters";
-
+import { useCart } from "../../contexts/CartContext";
 const ProductListing = () => {
   const { dispatch, filter, filterdProducts } = useProducts();
-
+  const {cart,addToCart}=useCart();
+   const token= JSON.parse(localStorage.getItem('token'));
+   
   return (
     <div className="products-page">
       <Navbar className="nav-bar" />
@@ -32,7 +34,10 @@ const ProductListing = () => {
             rating,
             Originalprice
           } = product;
-
+          const addProductToCart=()=>{
+              addToCart(token,product)
+              console.log(product)
+          }
           return (
             <ProductListingCard
               _id={_id}
@@ -43,6 +48,7 @@ const ProductListing = () => {
               description={description}
               Originalprice={Originalprice}
               rating={rating}
+              onAddtocart={addProductToCart}
             />
           );
         })}

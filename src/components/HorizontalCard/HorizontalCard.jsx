@@ -4,7 +4,7 @@ const HorizontalCard = ({ imageUrl, title, price, description }) => {
   return (
     <div class="horizontal-card">
       <img src={imageUrl} />
-      <div class="details">
+      <div class="product-details">
         <h3 class="heading-md">{title}</h3>
         <p class="text-md fw-light">{description}</p>
         <div class="price">

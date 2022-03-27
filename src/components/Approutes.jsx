@@ -1,4 +1,4 @@
-import { Routes, Route,Navigate } from "react-router-dom";
+import { Routes, Route,Navigate ,Outlet} from "react-router-dom";
 import {
   Home,
   ProductListing,
@@ -7,6 +7,7 @@ import {
   Signin,
   Signup
 } from "../Pages";
+import Mockman from "mockman-js";
 import {useAuth} from './../contexts/AuthContext'
 const Approutes = () => {
   return (
@@ -19,12 +20,13 @@ const Approutes = () => {
 			</Route>
       <Route path="/signin" element={<Signin />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/mockman" element={<Mockman />} />
     </Routes>
   );
 };
 const ProtectedRoutes=()=>{
   const {isAuthenticated}=useAuth();
-  return isAuthenticated()?<Outlet/>:<Navigate to='signin'/>
+  return isAuthenticated()?<Outlet/>:<Navigate to='/signin'/>
 }
 export { Approutes };
  
