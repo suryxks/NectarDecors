@@ -69,10 +69,7 @@ const Home = () => {
       <section className="special">
         {featured.map((product) => (
           <HorizontalCard
-            imageUrl={product.imageUrl}
-            price={product.price}
-            title={product.title}
-            description={product.description}
+           product={product}
             
           />
         ))}
