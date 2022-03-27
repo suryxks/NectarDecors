@@ -10,7 +10,7 @@ const Cart = () => {
     return (
         <div>
             <Navbar />
-            <h1 class="heading-xl text-center">My Cart</h1>
+            <h1 class="heading-xl text-center">{`My Cart (${cartList.length})`}</h1>
             <div class="cart">
                 <div>{cartList.map(product => {
                     
