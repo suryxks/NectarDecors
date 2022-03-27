@@ -1,9 +1,11 @@
 import React from "react";
 import { useCart } from "../../contexts/CartContext";
+import {useWishList} from "../../contexts/WishListContext"
 import "./HorizontalCard.css";
 const HorizontalCard = ({ product }) => {
   const {imageUrl, title, price, description,Originalprice,discount}=product;
-  const {addToCart}=useCart();
+  const {addToCart}=useCart();useWishList
+  const {wishList,addToWishList,deleteFromWishlist }=useWishList();
   const token=JSON.parse(localStorage.getItem('token'));
   return (
     <div class="horizontal-card">
@@ -20,7 +22,9 @@ const HorizontalCard = ({ product }) => {
           <button class="btn-cta" onClick={()=>{
             addToCart(token,product);
           }}>Add to cart</button>
-          <button class="btn-cta-outline">Add to Wishlist</button>
+          <button class="btn-cta-outline" onClick={()=>{
+            addToWishList(token,product);
+          }}>Add to Wishlist</button>
         </div>
       </div>
     </div>

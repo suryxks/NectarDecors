@@ -1,7 +1,7 @@
 
 
-const CartCard = ({ product, updateQuantityOfProduct, removeProduct }) => {
-  const { imageUrl, title, price, description, qty, _id: id,Originalprice,discount } = product
+const CartCard = ({ product, updateQuantityOfProduct, removeProduct, addToWishList }) => {
+  const { imageUrl, title, price, description, qty, _id: id, Originalprice, discount } = product;
   const token = JSON.parse(localStorage.getItem('token'));
   return (
     <div className="horizontal-card" key={id}>
@@ -15,20 +15,24 @@ const CartCard = ({ product, updateQuantityOfProduct, removeProduct }) => {
           <h4 className="discount heading-xs">{`(${discount})`}</h4>
         </div>
         <div className='product-quantity centerd-items'>
-          <button  onClick={() => {
+          <button onClick={() => {
             updateQuantityOfProduct(token, id, 'increment');
           }}>+</button>
           <div>{qty}</div>
           <button onClick={() => {
             if (qty === 1) {
               removeProduct(token, id);
+
             } else {
               updateQuantityOfProduct(token, id, 'decrement');
             }
           }}>-</button>
         </div>
         <div className="horizontal-card-btn">
-          <button className="btn-cta">Move to Wishlist</button>
+          <button className="btn-cta" onClick={() => {
+            removeProduct(token, id)
+            addToWishList(token, product);
+          }}>Move to Wishlist</button>
           <button className="btn-cta-outline" onClick={() => { removeProduct(token, id) }}>Remove from Cart</button>
         </div>
       </div>

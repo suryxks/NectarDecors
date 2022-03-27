@@ -5,6 +5,7 @@ import { useProducts } from "../../contexts/ProductContext";
 import { ProductListingCard } from "../../components/ProductListingCard/ProductListingCard";
 import { ProductFilters } from "./ProductFilters";
 import { useCart } from "../../contexts/CartContext";
+import toast, { Toaster } from 'react-hot-toast';
 const ProductListing = () => {
   const { dispatch, filter, filterdProducts } = useProducts();
   const {cart,addToCart}=useCart();
@@ -48,6 +49,7 @@ const ProductListing = () => {
               description={description}
               Originalprice={Originalprice}
               rating={rating}
+              product={product}
               onAddtocart={addProductToCart}
             />
           );

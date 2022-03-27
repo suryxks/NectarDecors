@@ -1,7 +1,9 @@
 import React from "react";
 import "./ProductListingCard.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import Rating from "@mui/material/Rating";
+import { useWishList } from "../../contexts/WishListContext";
 export const ProductListingCard = ({
   _id,
   imageUrl,
@@ -11,12 +13,17 @@ export const ProductListingCard = ({
   description,
   rating,
   Originalprice,
-  onAddtocart
+  onAddtocart,
+  product
 }) => {
+  const {wishList,addToWishList,deleteFromWishlist }=useWishList();
+  const token=JSON.parse(localStorage.getItem('token'));
   return (
     <div className="vertical-card" key={_id}>
       <img src={imageUrl} alt={description} className="product-image" />
-      <FavoriteBorderIcon className="wishlist-icon" />
+      
+    {wishList.find((item)=>item._id===_id)?<FavoriteIcon className="wishlist-icon active" onClick={()=>{deleteFromWishlist(token,_id)}}/>:<FavoriteBorderIcon className="wishlist-icon" onClick={()=>{addToWishList(token,product)}} />}
+      
       <div className="details">
         <h3 className="heading-sm active">{title}</h3>
 

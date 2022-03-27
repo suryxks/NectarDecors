@@ -1,7 +1,7 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 const WishListContext = createContext(null);
-const WishListProvider = ({ children }) => {
+export const WishListProvider = ({ children }) => {
     const [wishList, setWishList] = useState([]);
     const addToWishList = async (token, product) => {
         try {
@@ -14,19 +14,20 @@ const WishListProvider = ({ children }) => {
                     },
                 }
             );
-            setWishList(data.wishList);
+            console.log(data)
+            setWishList(data.wishlist);
         } catch (error) {
             console.log(error);
         }
     }
-    const deleteFromWishlist=async()=>{
+    const deleteFromWishlist=async(token,id)=>{
         try {
-            const { data } = await axios.delete(`/api/user/wishlist${id}`, {
+            const { data } = await axios.delete(`/api/user/wishlist/${id}`, {
                 headers: {
                     authorization: token,
                 },
             });
-            setWishList(data.wishList);
+            setWishList(data.wishlist);
         } catch (error) {
             console.error(error.message);
 
@@ -38,3 +39,5 @@ const WishListProvider = ({ children }) => {
         </WishListContext.Provider>
     )
 }
+
+export const useWishList=()=>useContext(WishListContext)

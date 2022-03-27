@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import { Navbar } from '../../components'
 import { useCart } from '../../contexts/CartContext'
 import CartCard from '../../components/HorizontalCard/CartCard'
+import { useWishList } from '../../contexts/WishListContext';
 import './Cart.css'
 const Cart = () => {
     const { cart: cartList, addToCart, updateQuantityOfProduct, removeProduct } = useCart();
+    const{wishList,addToWishList}=useWishList();
     const priceDetails = cartList.reduce((acc, current) => {
 
         return { price: acc.price + Number(current.price), Originalprice: acc.Originalprice + Number(current.Originalprice), discount: acc.discount + (Number(current.Originalprice) - Number(current.price)) }
@@ -18,7 +20,7 @@ const Cart = () => {
                 <div>{cartList.map(product => {
 
                     return (
-                        <CartCard product={product} updateQuantityOfProduct={updateQuantityOfProduct} removeProduct={removeProduct} />
+                        <CartCard product={product} updateQuantityOfProduct={updateQuantityOfProduct} removeProduct={removeProduct} addToWishList={addToWishList}/>
                     )
                 })}</div>
 
