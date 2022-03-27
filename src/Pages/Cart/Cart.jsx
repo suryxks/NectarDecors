@@ -3,6 +3,7 @@ import { Navbar } from '../../components'
 import { useCart } from '../../contexts/CartContext'
 import CartCard from '../../components/HorizontalCard/CartCard'
 import { useWishList } from '../../contexts/WishListContext';
+import toast, { Toaster } from 'react-hot-toast';
 import './Cart.css'
 const Cart = () => {
     const { cart: cartList, addToCart, updateQuantityOfProduct, removeProduct } = useCart();
@@ -15,6 +16,7 @@ const Cart = () => {
     return (
         <div>
             <Navbar />
+            <Toaster/>
             <h1 class="heading-xl text-center">{`My Cart (${cartList.length})`}</h1>
             <div class="cart">
                 <div>{cartList.map(product => {

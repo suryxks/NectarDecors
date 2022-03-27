@@ -1,4 +1,4 @@
-
+import toast, { Toaster } from 'react-hot-toast';
 
 const CartCard = ({ product, updateQuantityOfProduct, removeProduct, addToWishList }) => {
   const { imageUrl, title, price, description, qty, _id: id, Originalprice, discount } = product;
@@ -32,6 +32,7 @@ const CartCard = ({ product, updateQuantityOfProduct, removeProduct, addToWishLi
           <button className="btn-cta" onClick={() => {
             removeProduct(token, id)
             addToWishList(token, product);
+            toast.success('Item moved to wishlist');
           }}>Move to Wishlist</button>
           <button className="btn-cta-outline" onClick={() => { removeProduct(token, id) }}>Remove from Cart</button>
         </div>

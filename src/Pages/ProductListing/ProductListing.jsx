@@ -19,7 +19,7 @@ const ProductListing = () => {
         filterValues={filter}
         dispatch={dispatch}
       />
-
+      <Toaster/>
       <div className="product-listing">
         {filterdProducts.map((product) => {
           const {
@@ -37,7 +37,7 @@ const ProductListing = () => {
           } = product;
           const addProductToCart=()=>{
               addToCart(token,product)
-              console.log(product)
+              toast.success('Item added to Cart');
           }
           return (
             <ProductListingCard
