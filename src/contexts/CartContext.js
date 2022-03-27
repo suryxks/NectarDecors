@@ -29,7 +29,7 @@ export const CartProvider = ({ children }) => {
 
   
     const addToCart = async (token, product) => {
-        {
+        
             try {
                 const { data } = await axios.post(
                     "/api/user/cart",
@@ -48,7 +48,7 @@ export const CartProvider = ({ children }) => {
                 console.log(error);
 
             }
-        }
+        
     }
     const removeProduct = async (token, id) => {
         try {
