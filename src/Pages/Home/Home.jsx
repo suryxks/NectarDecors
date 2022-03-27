@@ -73,6 +73,7 @@ const Home = () => {
             price={product.price}
             title={product.title}
             description={product.description}
+            
           />
         ))}
       </section>
