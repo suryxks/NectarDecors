@@ -64,8 +64,16 @@ html{
 .product-quantity{
     display: flex;
     justify-content: space-around;
+    align-items: center;
     width: 5rem;
     margin: 1rem;
+}
+.product-quantity>button{
+    background-color: var(--white);
+    color: var(--cta);
+    border:none;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 @media(max-width:550px) {
