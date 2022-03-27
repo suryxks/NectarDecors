@@ -3,7 +3,7 @@ import "./Home.css";
 import { Navbar, HorizontalCard } from "../../components";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import toast, { Toaster } from 'react-hot-toast';
 import { useData } from "../../contexts/DataContext";
 const Home = () => {
   const [err, setErr] = useState("");
@@ -41,6 +41,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
+      <Toaster/>
       <section className="hero-sec">
         <div className="hero-txt">
           <h2 className="heading-lg text-center">
@@ -55,6 +56,7 @@ const Home = () => {
       <h1 className="heading-lg">Categories</h1>
       <section className="categories">
         {categories.map((category) => (
+          <Link to='/products'>
           <div className="categories-card">
             <a href="">
               <img src={category.bannerImage} alt="plant" />
@@ -63,6 +65,7 @@ const Home = () => {
               {category.categoryName}
             </p>
           </div>
+          </Link>
         ))}
       </section>
       <h1 className="heading-xl text-center">Featured Products</h1>

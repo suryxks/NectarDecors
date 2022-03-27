@@ -2,6 +2,7 @@ import React from "react";
 import { useCart } from "../../contexts/CartContext";
 import {useWishList} from "../../contexts/WishListContext"
 import "./HorizontalCard.css";
+import toast from 'react-hot-toast';
 const HorizontalCard = ({ product }) => {
   const {imageUrl, title, price, description,Originalprice,discount}=product;
   const {addToCart}=useCart();useWishList
@@ -21,9 +22,11 @@ const HorizontalCard = ({ product }) => {
         <div class="horizontal-card-btn">
           <button class="btn-cta" onClick={()=>{
             addToCart(token,product);
+            toast.success('Item added to cart')
           }}>Add to cart</button>
           <button class="btn-cta-outline" onClick={()=>{
             addToWishList(token,product);
+            toast.success('Item added to wish List')
           }}>Add to Wishlist</button>
         </div>
       </div>
