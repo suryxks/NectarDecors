@@ -36,11 +36,11 @@ const Navbar = () => {
           </button>
           <Link to="/wishlist">
             <FavoriteBorderIcon className="icon" />
-            {wishList.length!=0?(<span className='badge-icon'>{wishList.length===0?null:wishList.length}</span>):null}
+            {wishList.length!==0?(<span className='badge-icon'>{wishList.length===0?null:wishList.length}</span>):null}
           </Link>
           <Link to="/cart">
             <ShoppingBagIcon className="icon" />
-           {cart.length!=0?(<span className='badge-icon'>{cart.length===0?null:cart.length}</span>):null}
+           {cart.length!==0?(<span className='badge-icon'>{cart.length===0?null:cart.length}</span>):null}
             
           </Link>
           <Link to="/">
