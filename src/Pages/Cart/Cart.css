@@ -1,0 +1,21 @@
+.quantity>input{
+    width: 1.5rem;
+
+}
+.quantity{
+    margin: 1rem;
+}
+.bill{
+    padding: 1rem;
+    max-height: 20rem;
+    box-shadow: var(--shadow);
+    border-radius: 0.3rem;
+}
+.bill-item{
+    display: flex;
+    justify-content: space-between;
+}
+.cart{
+    display: flex;
+    justify-content: space-around;
+}

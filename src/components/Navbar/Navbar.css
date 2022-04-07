@@ -20,6 +20,10 @@
 .actions {
   padding: 1rem;
 }
+.badge-icon{
+  background-color: black;
+  left:-0.6rem;
+}
 
 @media (max-width: 1100px) {
   /* Tablets */
