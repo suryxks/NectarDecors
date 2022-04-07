@@ -17,38 +17,38 @@ const Cart = () => {
         <div>
             <Navbar />
             <Toaster/>
-            <h1 class="heading-xl text-center">{`My Cart (${cartList.length})`}</h1>
-            <div class="cart">
+            <h1 className="heading-xl text-center">{`My Cart (${cartList.length})`}</h1>
+            <div className="cart">
                 <div>{cartList.map(product => {
 
                     return (
-                        <CartCard product={product} updateQuantityOfProduct={updateQuantityOfProduct} removeProduct={removeProduct} addToWishList={addToWishList}/>
+                        <CartCard product={product} updateQuantityOfProduct={updateQuantityOfProduct} removeProduct={removeProduct} addToWishList={addToWishList} key={product._id}/>
                     )
                 })}</div>
 
 
-                <div class="bill">
-                    <h3 class="heading-md text-center"> Price Details</h3>
+                <div className="bill">
+                    <h3 className="heading-md text-center"> Price Details</h3>
                     <hr />
-                    <div class="bill-item">
-                        <p class="text-sm">Price</p>
-                        <p class="text-sm">{`₹${priceDetails.Originalprice}`}</p>
+                    <div className="bill-item">
+                        <p className="text-sm">Price</p>
+                        <p className="text-sm">{`₹${priceDetails.Originalprice}`}</p>
 
                     </div>
-                    <div class="bill-item">
-                        <p class="text-sm">Discount</p>
-                        <p class="text-sm">{`- ₹${priceDetails.discount}`}</p>
-
-                    </div>
-                    <hr />
-                    <div class="bill-item">
-                        <h3 class="heading-sm">Total</h3>
-                        <h3 class="heading-sm">{`₹${priceDetails.price}`}</h3>
+                    <div className="bill-item">
+                        <p className="text-sm">Discount</p>
+                        <p className="text-sm">{`- ₹${priceDetails.discount}`}</p>
 
                     </div>
                     <hr />
-                    <p class="text-sm">You will save {` ₹${priceDetails.discount} `}in This order</p>
-                    <button class="btn-cta">Place order</button>
+                    <div className="bill-item">
+                        <h3 className="heading-sm">Total</h3>
+                        <h3 className="heading-sm">{`₹${priceDetails.price}`}</h3>
+
+                    </div>
+                    <hr />
+                    <p className="text-sm">You will save {` ₹${priceDetails.discount} `}in This order</p>
+                    <button className="btn-cta">Place order</button>
                 </div>
             </div>
         </div>

@@ -56,7 +56,7 @@ const Home = () => {
       <h1 className="heading-lg">Categories</h1>
       <section className="categories">
         {categories.map((category) => (
-          <Link to='/products'>
+          <Link to='/products' key={category._id}>
           <div className="categories-card">
             <a href="">
               <img src={category.bannerImage} alt="plant" />
@@ -73,7 +73,7 @@ const Home = () => {
         {featured.map((product) => (
           <HorizontalCard
            product={product}
-            
+            key={product._id}
           />
         ))}
       </section>

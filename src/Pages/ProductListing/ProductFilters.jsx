@@ -4,9 +4,9 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
   const { category, rating, price, priceRangeSlider } = filterValues;
 
   return (
-    <aside class="filters">
+    <aside className="filters">
       <div className="filter-header">
-        <h2 class="heading-md text-left ">Filters</h2>
+        <h2 className="heading-md text-left ">Filters</h2>
         <button
           className="clear-btn text-sm"
           onClick={() => dispatch({ type: "CLEAR" })}
@@ -14,10 +14,10 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
           Clear
         </button>
       </div>
-      <div class="filter-wrapper">
-        <h3 class="heading-md text-left active">Category</h3>
-        <div class="filter-value filter">
-          <label for="category">
+      <div className="filter-wrapper">
+        <h3 className="heading-md text-left active">Category</h3>
+        <div className="filter-value filter">
+          <label htmlFor="category">
             <input
               type="checkbox"
               name="category"
@@ -26,7 +26,7 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
             />{" "}
             Plants
           </label>
-          <label for="category">
+          <label htmlFor="category">
             <input
               type="checkbox"
               name="category"
@@ -35,7 +35,7 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
             />{" "}
             Wall decor
           </label>
-          <label for="category">
+          <label htmlFor="category">
             <input
               type="checkbox"
               name="category"
@@ -44,7 +44,7 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
             />{" "}
             Clocks
           </label>
-          <label for="category">
+          <label htmlFor="category">
             <input
               type="checkbox"
               name="category"
@@ -56,10 +56,10 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
         </div>
       </div>
 
-      <div class="filter-wrapper">
-        <h3 class="heading-md text-left active">Rating</h3>
-        <div class="filter-value filter">
-          <label for="rating">
+      <div className="filter-wrapper">
+        <h3 className="heading-md text-left active">Rating</h3>
+        <div className="filter-value filter">
+          <label htmlFor="rating">
             <input
               type="radio"
               name="rating"
@@ -68,7 +68,7 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
             />{" "}
             4 and above
           </label>
-          <label for="rating">
+          <label htmlFor="rating">
             <input
               type="radio"
               name="rating"
@@ -77,7 +77,7 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
             />{" "}
             3 and above
           </label>
-          <label for="rating">
+          <label htmlFor="rating">
             <input
               type="radio"
               name="rating"
@@ -86,7 +86,7 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
             />{" "}
             2 and above
           </label>
-          <label for="rating">
+          <label htmlFor="rating">
             <input
               type="radio"
               name="rating"
@@ -98,10 +98,10 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
         </div>
       </div>
 
-      <div class="filter-wrapper">
-        <h3 class="heading-md text-left active">Sort by Price</h3>
-        <div class="filter-value filter">
-          <label for="price-filter">
+      <div className="filter-wrapper">
+        <h3 className="heading-md text-left active">Sort by Price</h3>
+        <div className="filter-value filter">
+          <label htmlFor="price-filter">
             <input
               type="radio"
               name="price-filter"
@@ -110,7 +110,7 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
             />{" "}
             Low to High
           </label>
-          <label for="price-filter">
+          <label htmlFor="price-filter">
             <input
               type="radio"
               name="price-filter"
@@ -121,11 +121,11 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
           </label>
         </div>
       </div>
-      <div class="filter-wrapper">
-        <h3 class="heading-md text-left active">Price Range</h3>
-        <div class="filter-value filter">
+      <div className="filter-wrapper">
+        <h3 className="heading-md text-left active">Price Range</h3>
+        <div className="filter-value filter">
           <label>
-            <label for="price">{`₹1 to ₹${priceRangeSlider}`}</label>
+            <label htmlFor="price">{`₹1 to ₹${priceRangeSlider}`}</label>
             <input
               type="range"
               id="price"

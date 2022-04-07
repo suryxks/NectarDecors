@@ -14,7 +14,6 @@ export const WishListProvider = ({ children }) => {
                     },
                 }
             );
-            console.log(data)
             setWishList(data.wishlist);
         } catch (error) {
             console.log(error);

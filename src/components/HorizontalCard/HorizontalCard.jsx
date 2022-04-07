@@ -9,22 +9,22 @@ const HorizontalCard = ({ product }) => {
   const {wishList,addToWishList,deleteFromWishlist }=useWishList();
   const token=JSON.parse(localStorage.getItem('token'));
   return (
-    <div class="horizontal-card">
+    <div className="horizontal-card">
       <img src={imageUrl} />
-      <div class="product-details">
-        <h3 class="heading-md active">{title}</h3>
-        <p class="text-md fw-light fw-bold">{description}</p>
-        <div class="price">
+      <div className="product-details">
+        <h3 className="heading-md active">{title}</h3>
+        <p className="text-md fw-light fw-bold">{description}</p>
+        <div className="price">
         <h4 className="heading-sm">{`₹${price}`}</h4>
           <h4 className="strike heading-sm">{`₹${Originalprice}`}</h4>
           <h4 className="discount heading-sm">{`(${discount})`}</h4>
         </div>
-        <div class="horizontal-card-btn">
-          <button class="btn-cta" onClick={()=>{
+        <div className="horizontal-card-btn">
+          <button className="btn-cta" onClick={()=>{
             addToCart(token,product);
             toast.success('Item added to cart')
           }}>Add to cart</button>
-          <button class="btn-cta-outline" onClick={()=>{
+          <button className="btn-cta-outline" onClick={()=>{
             addToWishList(token,product);
             toast.success('Item added to wish List')
           }}>Add to Wishlist</button>

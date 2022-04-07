@@ -42,6 +42,7 @@ const ProductListing = () => {
           return (
             <ProductListingCard
               _id={_id}
+              key={_id}
               imageUrl={imageUrl}
               title={title}
               price={price}

@@ -13,6 +13,10 @@ export const Signin = () => {
 
   const navigate = useNavigate();
   const { setAuthState } = useAuth();
+  const guest={
+    email:'adarshbalika@gmail.com',
+    password: 'adarshBalika123'
+  }
   const loginHandler = async (Logincredentials) => {
     try {
       const response = await axios.post("/api/auth/login", Logincredentials);
@@ -84,6 +88,15 @@ export const Signin = () => {
             }}
           >
             Login
+          </button>
+          <button
+            className="btn-cta"
+            onClick={(e) => {
+              e.preventDefault();
+              loginHandler(guest);
+            }}
+          >
+            Login as guest
           </button>
         </form>
         <Link to="/signup" className="text-sm fw-semibold login-link">

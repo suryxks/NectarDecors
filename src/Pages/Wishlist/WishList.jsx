@@ -40,6 +40,7 @@ const WishList=()=>{
                       Originalprice={Originalprice}
                       rating={rating}
                       onAddtocart={addProductToCart}
+                      key={id}
                     />)
              })}
          </div>
