@@ -7,10 +7,11 @@ import toast, { Toaster } from 'react-hot-toast';
 import './Cart.css'
 const Cart = () => {
     const { cart: cartList, addToCart, updateQuantityOfProduct, removeProduct } = useCart();
-    const{wishList,addToWishList}=useWishList();
+    const { wishList, addToWishList } = useWishList();
+    console.log(cartList)
     const priceDetails = cartList.reduce((acc, current) => {
 
-        return { price: acc.price + Number(current.price), Originalprice: acc.Originalprice + Number(current.Originalprice), discount: acc.discount + (Number(current.Originalprice) - Number(current.price)) }
+        return { price: acc.price + Number(current.price)*Number(current.qty), Originalprice: acc.Originalprice + Number(current.Originalprice)*Number(current.qty), discount: acc.discount + Number(current.qty)*(Number(current.Originalprice) - Number(current.price)) }
     },{price:0,Originalprice:0,discount:0})
 
     return (
@@ -26,30 +27,31 @@ const Cart = () => {
                     )
                 })}</div>
 
+                {cartList.length===0?<h1 className='text-center'>You Dont have anything added to cart</h1>:
+                    <div className="bill">
+                        <h3 className="heading-md text-center"> Price Details</h3>
+                        <hr />
+                        <div className="bill-item">
+                            <p className="text-sm">Price</p>
+                            <p className="text-sm">{`₹${priceDetails.Originalprice}`}</p>
 
-                <div className="bill">
-                    <h3 className="heading-md text-center"> Price Details</h3>
-                    <hr />
-                    <div className="bill-item">
-                        <p className="text-sm">Price</p>
-                        <p className="text-sm">{`₹${priceDetails.Originalprice}`}</p>
+                        </div>
+                        <div className="bill-item">
+                            <p className="text-sm">Discount</p>
+                            <p className="text-sm">{`- ₹${priceDetails.discount}`}</p>
 
+                        </div>
+                        <hr />
+                        <div className="bill-item">
+                            <h3 className="heading-sm">Total</h3>
+                            <h3 className="heading-sm">{`₹${priceDetails.price}`}</h3>
+
+                        </div>
+                        <hr />
+                        <p className="text-sm">You will save {` ₹${priceDetails.discount} `}in This order</p>
+                        <button className="btn-cta">Place order</button>
                     </div>
-                    <div className="bill-item">
-                        <p className="text-sm">Discount</p>
-                        <p className="text-sm">{`- ₹${priceDetails.discount}`}</p>
-
-                    </div>
-                    <hr />
-                    <div className="bill-item">
-                        <h3 className="heading-sm">Total</h3>
-                        <h3 className="heading-sm">{`₹${priceDetails.price}`}</h3>
-
-                    </div>
-                    <hr />
-                    <p className="text-sm">You will save {` ₹${priceDetails.discount} `}in This order</p>
-                    <button className="btn-cta">Place order</button>
-                </div>
+                }
             </div>
         </div>
     );

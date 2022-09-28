@@ -1,21 +1,32 @@
-.quantity>input{
+.quantity>input {
     width: 1.5rem;
 
 }
-.quantity{
+
+.quantity {
     margin: 1rem;
 }
-.bill{
+
+.bill {
     padding: 1rem;
     max-height: 20rem;
     box-shadow: var(--shadow);
     border-radius: 0.3rem;
 }
-.bill-item{
+
+.bill-item {
     display: flex;
     justify-content: space-between;
 }
-.cart{
+
+.cart {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+}
+
+@media(max-width:550px) {
+    .cart {
+        flex-direction: column;
+    }
 }
