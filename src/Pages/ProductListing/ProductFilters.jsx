@@ -97,30 +97,6 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
           </label>
         </div>
       </div>
-
-      <div className="filter-wrapper">
-        <h3 className="heading-md text-left active">Sort by Price</h3>
-        <div className="filter-value filter">
-          <label htmlFor="price-filter">
-            <input
-              type="radio"
-              name="price-filter"
-              checked={price.lowToHigh}
-              onChange={() => dispatch({ type: "PRICE_LOW_TO_HIGH" })}
-            />{" "}
-            Low to High
-          </label>
-          <label htmlFor="price-filter">
-            <input
-              type="radio"
-              name="price-filter"
-              checked={price.highToLow}
-              onChange={() => dispatch({ type: "PRICE_HIGH_TO_LOW" })}
-            />{" "}
-            High to Low
-          </label>
-        </div>
-      </div>
       <div className="filter-wrapper">
         <h3 className="heading-md text-left active">Price Range</h3>
         <div className="filter-value filter">

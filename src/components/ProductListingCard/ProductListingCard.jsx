@@ -1,10 +1,10 @@
 import React from "react";
 import "./ProductListingCard.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import Rating from "@mui/material/Rating";
 import { useWishList } from "../../contexts/WishListContext";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 export const ProductListingCard = ({
   _id,
   imageUrl,
@@ -15,25 +15,33 @@ export const ProductListingCard = ({
   rating,
   Originalprice,
   onAddtocart,
-  product
+  product,
 }) => {
   const { wishList, addToWishList, deleteFromWishlist } = useWishList();
-  const token = JSON.parse(localStorage.getItem('token'));
+  const token = JSON.parse(localStorage.getItem("token"));
   return (
     <div className="vertical-card" key={_id}>
       <img src={imageUrl} alt={description} className="product-image" />
-
-      {wishList.find((item) => item._id === _id) ? <FavoriteIcon className="wishlist-icon active" onClick={() => {
-        deleteFromWishlist(token, _id)
-        toast.success('item removed from wishlist')
-      }} /> : <FavoriteBorderIcon className="wishlist-icon" onClick={() => {
-        addToWishList(token, product)
-        toast.success('item added to wishlist')
-      }}
-      />}
+      {wishList.find((item) => item._id === _id) ? (
+        <FavoriteIcon
+          className="wishlist-icon active"
+          onClick={() => {
+            deleteFromWishlist(token, _id);
+            toast.success("item removed from wishlist");
+          }}
+        />
+      ) : (
+        <FavoriteBorderIcon
+          className="wishlist-icon"
+          onClick={() => {
+            addToWishList(token, product);
+            toast.success("item added to wishlist");
+          }}
+        />
+      )}
 
       <div className="details">
-        <h3 className="heading-sm active">{title}</h3>
+        <h3 className="product-title">{title}</h3>
 
         <div className="price">
           <h4 className="heading-xs">{`₹${price}`}</h4>
@@ -47,7 +55,9 @@ export const ProductListingCard = ({
           readOnly
         />
         <div className="horizontal-card-btn">
-          <button className="btn-cta-vertical" onClick={onAddtocart}>Add to cart</button>
+          <button className="btn-cta-vertical" onClick={onAddtocart}>
+            Add to cart
+          </button>
         </div>
       </div>
     </div>

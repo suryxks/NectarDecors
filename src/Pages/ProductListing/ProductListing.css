@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 1rem;
-  grid-area: listing;
+  margin-top: 0;
 }
 .products-page {
   display: grid;
@@ -13,11 +13,37 @@
     "header header"
     "filters listing";
 }
+.sort-form{
+  display: flex;
+  align-items: center;
+  margin: 1rem  3rem 0rem  auto;
+  gap:1rem;
+  width: fit-content;
+}
+.products-container{
+  grid-area: listing;
+}
+.sort-select{
+  height: fit-content;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  background-color: var(--grey);
+  border: none;
+  padding: 0.5rem;
+}
 .nav-bar {
   grid-area: header;
 }
 .filters {
   grid-area: filters;
+}
+.products-header{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.products-header> .products-count{
+  margin: 0rem 3rem;
 }
 @media (max-width: 550px) {
   /* Phones */
@@ -25,9 +51,9 @@
   .product-listing {
     margin: 0.2rem;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 0.3rem;
     grid-area: listing;
-    place-items: center;
+    place-content: center;
   }
 }
