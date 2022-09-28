@@ -1,13 +1,17 @@
 .search-bar {
-    border: 2px solid var(--cta);
-    border-radius: 0.5em;
+    border: none;
+    border-radius: 0.5rem;
     display: flex;
     align-items: center;
     font-size: 1rem;
+    background-color: #dfdbdb;
   }
   .search-bar > input {
     border: none;
     outline: none;
+    background-color: #dfdbdb;
+    padding: 0.5rem;
+    font-size: 1.2rem;
   }
   .icon {
     color: var(--cta);

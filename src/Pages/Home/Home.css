@@ -55,15 +55,24 @@ html {
 }
 
 .categories-card {
-    border: 2px solid var(--border);
+    /* border: 2px solid var(--border); */
+    background-color: #FBCFE8;
     margin: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--cta);
+}
+.catrgory-image{
+    border-radius: 8px;
+}
+.category-link{
+    text-decoration: none;
+}
+.category-link:visited{
+    color: inherit;
 }
 
-.categories-card :hover {
-    border-radius: 0.2rem;
-    box-shadow: var(--shadow);
-    border-radius: 0.2rem;
-}
 
 .special {
     display: grid;
@@ -147,6 +156,6 @@ html {
 
     .categories-card {
         margin-bottom: 1rem;
-
+        padding: 2rem;
     }
 }

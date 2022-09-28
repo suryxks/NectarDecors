@@ -18,7 +18,7 @@ const Navbar = () => {
       <nav className="header-nav">
         <div className="brand">
           <Link to="/">
-            <h2 className="heading-lg">Nectar Decors</h2>
+            <h2 className="heading-md">Nectar Decors</h2>
           </Link>
         </div>
         <SearchBar />

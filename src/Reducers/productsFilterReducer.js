@@ -19,7 +19,7 @@ export const productsFilterReducer = (state, action) => {
           lowToHigh: false,
           highToLow: false
         },
-        priceRangeSlider: 1000
+        priceRangeSlider: 2500
       };
     }
     case "PRICE_LOW_TO_HIGH":
