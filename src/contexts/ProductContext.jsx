@@ -27,7 +27,7 @@ export const ProductsProvider = ({ children }) => {
       lowToHigh: false,
       highToLow: false
     },
-    priceRangeSlider: 1000
+    priceRangeSlider: 2500
   };
   const { products } = useData();
   const [filter, dispatch] = useReducer(productsFilterReducer, initialState);

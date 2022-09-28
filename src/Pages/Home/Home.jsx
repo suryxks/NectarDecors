@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from 'react-hot-toast';
 import { useData } from "../../contexts/DataContext";
+import { useProducts } from "../../contexts/ProductContext";
 const Home = () => {
   const [err, setErr] = useState("");
   const { categories, featured, setFeatured, setCategories } = useData();
+  const { dispatch} = useProducts();
   useEffect(() => {
     getCategories();
     getFeatured();
@@ -55,18 +57,40 @@ const Home = () => {
       </section>
       <h1 className="heading-lg">Categories</h1>
       <section className="categories">
-        {categories.map((category) => (
-          <Link to='/products' key={category._id}>
-          <div className="categories-card">
-            <a href="">
-              <img src={category.bannerImage} alt="plant" />
-            </a>
-            <p className="text-sm fw-semibold text-over">
-              {category.categoryName}
-            </p>
-          </div>
-          </Link>
-        ))}
+        {categories.map((category) => {
+          let TYPE = "";
+          if (category.categoryName == 'Plants') {
+            TYPE = "CATEGORY_PLANTS";
+          }
+          if (category.categoryName == 'Wall decors') {
+            TYPE = "CATEGORY_WALLDECOR";
+          }
+          if (category.categoryName == 'Clocks') {
+            TYPE = "CATEGORY_CLOCKS";
+          }
+          if (category.categoryName == 'Wall shelves') {
+            TYPE = "CATEGORY_WALLSHELVES";
+          }
+          return (
+            <Link
+              to='/products'
+              key={category._id}
+              className="category-link"
+              onClick={() => {
+                dispatch({ type: "CLEAR" })
+                dispatch({ type: TYPE })
+              }}>
+            <div className="categories-card">
+              <a href="">
+                <img src={category.bannerImage} alt="plant" className="catrgory-image" />
+              </a>
+              <p className="text-md fw-semibold">
+                {category.categoryName}
+              </p>
+            </div>
+          </Link>)
+        }
+        )}
       </section>
       <h1 className="heading-xl text-center">Featured Products</h1>
       <section className="special">

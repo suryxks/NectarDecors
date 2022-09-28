@@ -10,7 +10,6 @@
   flex-direction: column;
   padding: 1rem;
   grid-area: filters;
-  box-shadow: 12px 0px 10px -10px hsl(0deg 0% 0% / 0.2);
 }
 .filter-header {
   display: flex;
@@ -35,4 +34,9 @@
 
 .filter-wrapper > h3 {
   margin: 0;
+}
+@media(max-width:550px){
+  .filters{
+    display: none;
+  }
 }
