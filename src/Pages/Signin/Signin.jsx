@@ -75,7 +75,7 @@ export const Signin = () => {
             value={email}
             onChange={(e)=>handleChange('email',e)}
           />
-          {errors.email && <p className="error">{errors.email}</p>}
+          <div>{errors.email && <p className="error">{errors.email}</p>}</div>
           <label
             className="heading-md fw-bold active text-left"
             htmlFor="password"
@@ -94,7 +94,6 @@ export const Signin = () => {
               <input type="checkbox" />
               <label>Remember Me</label>
             </div>
-            <a href="#">Forgot Password?</a>
           </div>
           <button
             className="btn-cta"

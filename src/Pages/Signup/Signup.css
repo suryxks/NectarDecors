@@ -1,27 +1,38 @@
 .form-grp {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 0.5rem;
   justify-content: center;
   margin: auto;
+  align-items:center;
 }
 .form-grp > input {
   font-size: 1rem;
-  outline: none;
   border: 2px solid var(--cta);
   border-radius: 0.3rem;
-  padding: 0.5rem;
-  margin: 0.8rem;
+  padding: 0.3rem;
+  margin: 0.3rem auto;
+  align-self: flex-start;
+}
+.form-grp >label{
+  align-self: flex-start;
+}
+.error{
+  margin: 0.3rem auto;
+  color: red;
+  max-width: 15rem;
 }
 .display {
   max-width: fit-content;
 }
 .form-grp > button {
-  margin: 1rem auto;
+  margin: 0.3rem auto;
+  width: 100%;
 }
 
 .form-accept {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   accent-color: var(--cta);
   align-items: center;
@@ -41,9 +52,5 @@
   text-decoration: none;
 }
 .form-container {
-  min-width: 30rem;
-}
-.error{
-  color:red;
-  margin: 0;
+  max-width:20rem ;
 }
