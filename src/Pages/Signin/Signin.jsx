@@ -2,27 +2,21 @@ import { Navbar } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext.jsx";
+import { useForm } from "../../hooks/useForm";
 import axios from "axios";
 
-export const Signin = () => {
-  const [formValues, setFormValues] = useState({
-    email: "",
-    password: ""
-  });
-  const { email, password } = formValues;
 
-  const navigate = useNavigate();
-  const { setAuthState } = useAuth();
-  const guest={
-    email:'adarshbalika@gmail.com',
-    password: 'adarshBalika123'
-  }
+export const Signin = () => {
+  const initialState = {
+    email: "",
+    password: "",
+  };
   const loginHandler = async (Logincredentials) => {
     try {
       const response = await axios.post("/api/auth/login", Logincredentials);
 
       if (response.status === 200) {
-        const { foundUser, encodedToken } = await response.data;
+        const { foundUser, encodedToken } = response.data;
         localStorage.setItem("token", JSON.stringify(encodedToken));
         localStorage.setItem("userInfo", JSON.stringify(foundUser));
         setAuthState({
@@ -35,6 +29,33 @@ export const Signin = () => {
       console.log(error);
     }
   };
+  const { data, handleChange, handleSubmit, errors } = useForm({
+    intitalValues: initialState,
+    onSubmit: loginHandler,
+    validations: {
+      email: {
+        pattern: {
+          value: '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/',
+          message:'Please enter a valid email',
+        }
+      },
+      password: {
+        custom: {
+          isValid: (value) => value.length > 6,
+          message:'Password should be longer than six characters'
+        }
+      }
+    }
+  });
+  const { email, password } = data;
+  
+  const navigate = useNavigate();
+  const { setAuthState } = useAuth();
+  const guest={
+    email:'adarshbalika@gmail.com',
+    password: 'adarshBalika123'
+  }
+
   return (
     <div>
       <Navbar />
@@ -52,10 +73,9 @@ export const Signin = () => {
             placeholder="johndoe@something.com"
             name="email"
             value={email}
-            onChange={(e) => {
-              setFormValues((state) => ({ ...state, email: e.target.value }));
-            }}
+            onChange={(e)=>handleChange('email',e)}
           />
+          {errors.email && <p className="error">{errors.email}</p>}
           <label
             className="heading-md fw-bold active text-left"
             htmlFor="password"
@@ -66,13 +86,9 @@ export const Signin = () => {
             type="password"
             name="password"
             value={password}
-            onChange={(e) => {
-              setFormValues((state) => ({
-                ...state,
-                password: e.target.value
-              }));
-            }}
+            onChange={(e)=>handleChange('password',e)}
           />
+          {errors.password && <p className="error">{errors.password}</p>}
           <div className="form-accept">
             <div>
               <input type="checkbox" />
@@ -82,10 +98,7 @@ export const Signin = () => {
           </div>
           <button
             className="btn-cta"
-            onClick={(e) => {
-              e.preventDefault();
-              loginHandler({ email, password });
-            }}
+            onClick={handleSubmit}
           >
             Login
           </button>

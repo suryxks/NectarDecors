@@ -43,3 +43,7 @@
 .form-container {
   min-width: 30rem;
 }
+.error{
+  color:red;
+  margin: 0;
+}

@@ -55,6 +55,8 @@ html{
     width: fit-content;
     padding: 0.3rem 0.6rem;
     width: 70%;
+    cursor: pointer;
+  background: linear-gradient(to bottom, var(--ctalight),var(--cta));
 }
 
 .btn-cta-outline:hover {

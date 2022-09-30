@@ -8,7 +8,7 @@ const CartContext = createContext(null);
 export const CartProvider = ({ children }) => {
     const { isAuthenticated} = useAuth();
   
-    const token = JSON.parse(localStorage.getItem('token'));
+    const token = localStorage.getItem('token');
     const [cart, setCart] = useState([]);
   
  
