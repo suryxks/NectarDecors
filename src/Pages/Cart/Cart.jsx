@@ -4,15 +4,12 @@ import { useCart } from '../../contexts/CartContext'
 import CartCard from '../../components/HorizontalCard/CartCard'
 import { useWishList } from '../../contexts/WishListContext';
 import { Toaster } from 'react-hot-toast';
+import { getTotalPrice } from '../../Utils';
 import './Cart.css'
 const Cart = () => {
     const { cart: cartList,  updateQuantityOfProduct, removeProduct } = useCart();
     const {  addToWishList } = useWishList();
-    console.log(cartList)
-    const priceDetails = cartList.reduce((acc, current) => {
-
-        return { price: acc.price + Number(current.price)*Number(current.qty), Originalprice: acc.Originalprice + Number(current.Originalprice)*Number(current.qty), discount: acc.discount + Number(current.qty)*(Number(current.Originalprice) - Number(current.price)) }
-    },{price:0,Originalprice:0,discount:0})
+    const priceDetails = getTotalPrice(cartList);
 
     return (
         <div>

@@ -1,5 +1,5 @@
 import React,{ createContext, useState, useContext, useEffect } from "react";
-import axios from "axios";
+import { getproductsService } from "../services";
 const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
@@ -11,11 +11,8 @@ const DataProvider = ({ children }) => {
   }, []);
   const getProducts = async () => {
     try {
-      const { data: productsData, status } = await axios.get("/api/products");
-
-      status === 200
-        ? setProducts([...productsData.products])
-        : setProducts([]);
+      const data = await getproductsService();
+      setProducts(data.products);
     } catch (err) {
       console.error(err)
     }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ProductFilters.css";
 export const ProductFilters = ({ filterValues, dispatch }) => {
-  const { category, rating, price, priceRangeSlider } = filterValues;
+  const { category, rating, priceRangeSlider } = filterValues;
 
   return (
     <aside className="filters">

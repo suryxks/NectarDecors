@@ -1,19 +1,11 @@
 import React,{ createContext, useContext, useState } from 'react';
-import axios from 'axios';
+import { addToWishListService ,deleteFromWishListService} from '../services';
 const WishListContext = createContext(null);
 export const WishListProvider = ({ children }) => {
     const [wishList, setWishList] = useState([]);
     const addToWishList = async (token, product) => {
         try {
-            const { data } = await axios.post(
-                "/api/user/wishlist",
-                { product },
-                {
-                    headers: {
-                        authorization: token,
-                    },
-                }
-            );
+            const data = await addToWishListService(token,product)
             setWishList(data.wishlist);
         } catch (error) {
             console.log(error);
@@ -21,11 +13,7 @@ export const WishListProvider = ({ children }) => {
     }
     const deleteFromWishlist=async(token,id)=>{
         try {
-            const { data } = await axios.delete(`/api/user/wishlist/${id}`, {
-                headers: {
-                    authorization: token,
-                },
-            });
+           const data=await deleteFromWishListService(token,id)
             setWishList(data.wishlist);
         } catch (error) {
             console.error(error.message);

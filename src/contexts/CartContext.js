@@ -1,5 +1,4 @@
 import React, {createContext, useContext, useState} from 'react'
-import axios from 'axios'
 import {getCartService, addToCartService,removeFromCartService,updataProductQuantityService} from '../services'
 const CartContext = createContext(null)
 
