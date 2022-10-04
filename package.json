@@ -46,7 +46,9 @@
   "keywords": [],
   "description": "",
   "devDependencies": {
-    
-    "jest-environment-jsdom-fifteen": "^1.0.2"
+    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-testing-library": "^5.7.2",
+    "jest-environment-jsdom-fifteen": "^1.0.2",
+    "msw": "^0.47.3"
   }
 }

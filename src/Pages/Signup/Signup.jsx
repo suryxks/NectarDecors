@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React from 'react';
 import { Navbar } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
@@ -26,12 +26,12 @@ export const Signup = () => {
           token: encodedToken,
           userInfo: createdUser,
         });
-
+        localStorage.setItem("token", encodedToken);
+      localStorage.setItem("userInfo", createdUser);
         navigate("/");
       }
 
-      localStorage.setItem("token", encodedToken);
-      localStorage.setItem("userInfo", createdUser);
+      
     } catch (error) {
       console.log(error);
     }
@@ -62,7 +62,7 @@ export const Signup = () => {
 
       <div className="form-container display">
         <form className="form-grp" onSubmit={handleSubmit}>
-          <label className="heading-md fw-bold  text-left " for="email">
+          <label className="heading-md fw-bold  text-left " htmlFor="email">
             Email address
           </label>
           <input
@@ -74,7 +74,7 @@ export const Signup = () => {
             onChange={(e) => handleChange("email", e)}
           />
           {errors.email && <p className="error">{errors.email}</p>}
-          <label className="heading-md fw-bold  text-left" for="password">
+          <label className="heading-md fw-bold  text-left" htmlFor="password">
             Enter Password
           </label>
           <input

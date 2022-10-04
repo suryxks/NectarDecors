@@ -1,18 +1,15 @@
-import { createContext, useContext, useReducer, useEffect, useState } from 'react';
-import { useAuth } from './AuthContext'
+import React,{ createContext, useContext,useState } from 'react';
 import axios from 'axios';
 
 const CartContext = createContext(null);
 
 
 export const CartProvider = ({ children }) => {
-    const { isAuthenticated} = useAuth();
-  
-    const token = localStorage.getItem('token');
+
     const [cart, setCart] = useState([]);
   
  
-    const getCart = async (token) => {
+    const getCart = async (token)=>{
         try {
             const { data } = await axios.get("/api/user/cart", {
                 headers: {
@@ -85,7 +82,7 @@ export const CartProvider = ({ children }) => {
         }
     };
     return (
-        < CartContext.Provider value={{ cart, addToCart, removeProduct, updateQuantityOfProduct }}>
+        < CartContext.Provider value={{ cart, addToCart, removeProduct, updateQuantityOfProduct ,getCart}}>
             {children}
         </CartContext.Provider>
     );

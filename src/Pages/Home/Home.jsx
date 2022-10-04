@@ -3,7 +3,7 @@ import "./Home.css";
 import { Navbar, HorizontalCard } from "../../components";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import { useData } from "../../contexts/DataContext";
 import { useProducts } from "../../contexts/ProductContext";
 const Home = () => {

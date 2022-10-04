@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 const HorizontalCard = ({ product }) => {
   const {imageUrl, title, price, description,Originalprice,discount}=product;
   const {addToCart}=useCart();useWishList
-  const {wishList,addToWishList,deleteFromWishlist }=useWishList();
+  const {addToWishList }=useWishList();
   const token=localStorage.getItem('token');
   return (
     <div className="horizontal-card">

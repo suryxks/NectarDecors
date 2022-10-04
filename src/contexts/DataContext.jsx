@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, useEffect } from "react";
+import React,{ createContext, useState, useContext, useEffect } from "react";
 import axios from "axios";
 const DataContext = createContext();
 
@@ -6,7 +6,6 @@ const DataProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [featured, setFeatured] = useState([]);
   const [products, setProducts] = useState([]);
-  const [err, setErr] = useState("");
   useEffect(() => {
     getProducts();
   }, []);
@@ -17,7 +16,9 @@ const DataProvider = ({ children }) => {
       status === 200
         ? setProducts([...productsData.products])
         : setProducts([]);
-    } catch (err) {}
+    } catch (err) {
+      console.error(err)
+    }
   };
 
   return (

@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Navbar } from '../../components'
 import { useCart } from '../../contexts/CartContext'
 import CartCard from '../../components/HorizontalCard/CartCard'
 import { useWishList } from '../../contexts/WishListContext';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import './Cart.css'
 const Cart = () => {
-    const { cart: cartList, addToCart, updateQuantityOfProduct, removeProduct } = useCart();
-    const { wishList, addToWishList } = useWishList();
+    const { cart: cartList,  updateQuantityOfProduct, removeProduct } = useCart();
+    const {  addToWishList } = useWishList();
     console.log(cartList)
     const priceDetails = cartList.reduce((acc, current) => {
 

@@ -8,8 +8,7 @@ import { useCart } from "../../contexts/CartContext";
 import toast, { Toaster } from "react-hot-toast";
 const ProductListing = () => {
   const { dispatch, filter, filterdProducts } = useProducts();
-  const { price } = filter;
-  const { cart, addToCart } = useCart();
+  const {  addToCart } = useCart();
   const token = JSON.parse(localStorage.getItem("token"));
 
   return (
@@ -52,10 +51,7 @@ const ProductListing = () => {
               title,
               description,
               price,
-              categoryName,
               discount,
-              Stockquantity,
-              featured,
               imageUrl,
               rating,
               Originalprice,
