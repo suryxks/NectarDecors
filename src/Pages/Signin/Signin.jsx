@@ -34,7 +34,7 @@ export const Signin = () => {
       email: {
         pattern: {
           // eslint-disable-next-line no-useless-escape
-          value: "/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/",
+          value: "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",
           message: "Please enter a valid email",
         },
       },

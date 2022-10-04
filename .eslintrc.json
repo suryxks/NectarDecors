@@ -5,12 +5,13 @@
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "prettier"
     ],
     "overrides": [
     ],
     "parserOptions": {
-            "ecmaVersion": 6,
+            "ecmaVersion": "latest",
             "sourceType": "module",
             "ecmaFeatures": {
               "modules": true
@@ -22,7 +23,21 @@
         "testing-library"
     ],
     "rules": {
-        "react/prop-types": 0,
-        "no-unused-vars": "off"
+        "no-unused-vars": "off",
+        "react/prop-types": [1, {
+            "ignore": ["className", "children", "location", "params", "location*"]
+          }],
+          "no-param-reassign": [0, {
+            "props": false
+          }],
+          "prefer-rest-params": 1,
+          "arrow-body-style": 0,
+          "prefer-template": 0,
+          "react/prefer-stateless-function": 1,
+          "react/jsx-no-bind": [0, {
+            "ignoreRefs": false,
+            "allowArrowFunctions": false,
+            "allowBind": true
+          }]
     }
 }

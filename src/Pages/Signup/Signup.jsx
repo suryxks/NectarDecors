@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
 import { Navbar } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useForm } from "../../hooks/useForm";
-import axios from "axios";
+import { signUpService } from "../../services";
 import "./Signup.css";
+import { useEffect } from "react";
 const initialState = {
   email: "",
   password: "",
@@ -12,28 +13,17 @@ const initialState = {
 
 export const Signup = () => {
   const navigate = useNavigate();
-  const { setAuthState } = useAuth();
+  const { setAuthState,authState } = useAuth();
   const signupHandler = async ({ email, password }) => {
     try {
-      const response = await axios.post(`/api/auth/signup`, {
-        email: email,
-        password: password,
+      const { createdUser, encodedToken } = await signUpService({ email, password});
+      setAuthState({
+        token: encodedToken,
+        userInfo: createdUser,
       });
-      console.log(response)
-      if (response.status === 200) {
-        const { createdUser, encodedToken } = response.data;
-        setAuthState({
-          token: encodedToken,
-          userInfo: createdUser,
-        });
-        localStorage.setItem("token", encodedToken);
-      localStorage.setItem("userInfo", createdUser);
-        navigate("/");
-      }
-
-      
+      navigate("/");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   const { data, handleChange, handleSubmit, errors } = useForm({
@@ -42,7 +32,7 @@ export const Signup = () => {
     validations: {
       email: {
         pattern: {
-          value: "/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/",
+          value: "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",
           message: "Please enter a valid email",
         },
       },
@@ -56,6 +46,11 @@ export const Signup = () => {
   });
   const { email, password } = data;
 
+  useEffect(() => {
+    localStorage.setItem("token", authState.token);
+    localStorage.setItem("userInfo", authState.userInfo);
+  }, [authState])
+  
   return (
     <div>
       <Navbar />
