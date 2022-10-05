@@ -26,8 +26,9 @@ const Approutes = () => {
   );
 };
 const ProtectedRoutes=()=>{
-  const {isAuthenticated}=useAuth();
-  return isAuthenticated()?<Outlet/>:<Navigate to='/signin'/>
+  const { authState } = useAuth();
+  const { isAuthenticated } = authState;
+  return isAuthenticated?<Outlet/>:<Navigate to='/signin'/>
 }
 export { Approutes };
  
