@@ -13,13 +13,14 @@ const initialState = {
 
 export const Signup = () => {
   const navigate = useNavigate();
-  const { setAuthState,authState } = useAuth();
+  const { setAuthState, authState} = useAuth();
   const signupHandler = async ({ email, password }) => {
     try {
       const { createdUser, encodedToken } = await signUpService({ email, password});
       setAuthState({
         token: encodedToken,
         userInfo: createdUser,
+        isAuthenticated: true
       });
       navigate("/");
     } catch (error) {

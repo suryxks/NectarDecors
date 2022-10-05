@@ -20,6 +20,7 @@ export const Signin = () => {
       setAuthState({
         token: encodedToken,
         userInfo: foundUser,
+        isAuthenticated: true,
       });
       navigate("/");
     } catch (error) {

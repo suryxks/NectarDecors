@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import "./Home.css";
 import { Navbar, HorizontalCard } from "../../components";
 import { Link } from "react-router-dom";
@@ -7,7 +7,6 @@ import { useData } from "../../contexts/DataContext";
 import { useProducts } from "../../contexts/ProductContext";
 import {getCategoriesService} from '../../services'
 const Home = () => {
-  const [err, setErr] = useState("");
   const { categories, featured, setFeatured, setCategories,products} = useData();
   const { dispatch} = useProducts();
   useEffect(() => {
@@ -19,7 +18,7 @@ const Home = () => {
      const data= await getCategoriesService()
       setCategories([...data.categories]);
     } catch (err) {
-      setErr("server not responding");
+      console.error(err);
     }
   };
   const getFeaturedProdcts = (products) => {

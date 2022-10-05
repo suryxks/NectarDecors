@@ -5,9 +5,9 @@ import "./HorizontalCard.css";
 import toast from 'react-hot-toast';
 const HorizontalCard = ({ product }) => {
   const {imageUrl, title, price, description,Originalprice,discount}=product;
-  const {addToCart}=useCart();useWishList
+  const {addToCart}=useCart();
   const {addToWishList }=useWishList();
-  const token=localStorage.getItem('token');
+  const token = JSON.parse(localStorage.getItem("token"));
   return (
     <div className="horizontal-card">
       <img src={imageUrl} />

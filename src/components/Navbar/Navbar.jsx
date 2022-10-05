@@ -9,7 +9,8 @@ import { useAuth } from "../../contexts/AuthContext.jsx";
 import {useCart} from '../../contexts/CartContext'
 import {useWishList} from '../../contexts/WishListContext'
 const Navbar = () => {
-  const { isAuthenticated, logout } = useAuth();
+  const { authState, logout } = useAuth();
+  const { isAuthenticated } = authState;
   const navigate = useNavigate();
   const {cart}=useCart();
   const {wishList}=useWishList();
@@ -26,13 +27,13 @@ const Navbar = () => {
           <button
             className="btn-cta text-center"
             onClick={() => {
-              if (isAuthenticated()) {
+              if (isAuthenticated) {
                 logout();
               }
               navigate("/signin");
             }}
           >
-            {isAuthenticated() ? "Logout" : "Login"}
+            {isAuthenticated ? "Logout" : "Login"}
           </button>
           <Link to="/wishlist">
             <FavoriteBorderIcon className="icon" />

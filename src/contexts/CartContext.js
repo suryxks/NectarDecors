@@ -24,7 +24,7 @@ export const CartProvider = ({children}) => {
   }
   const removeProduct = async (token, id) => {
     try {
-        const data = removeFromCartService(token, id); 
+        const data = await removeFromCartService(token, id); 
       setCart(data.cart)
     } catch (error) {
       console.error(error.message)

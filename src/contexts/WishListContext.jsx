@@ -5,7 +5,8 @@ export const WishListProvider = ({ children }) => {
     const [wishList, setWishList] = useState([]);
     const addToWishList = async (token, product) => {
         try {
-            const data = await addToWishListService(token,product)
+            const data = await addToWishListService(token, product)
+            console.log(data)
             setWishList(data.wishlist);
         } catch (error) {
             console.log(error);

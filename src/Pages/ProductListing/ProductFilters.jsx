@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ProductFilters.css";
 export const ProductFilters = ({ filterValues, dispatch }) => {
   const { category, rating, priceRangeSlider } = filterValues;

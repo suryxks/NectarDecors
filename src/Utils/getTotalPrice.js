@@ -1,5 +1,5 @@
-export const getTotalPrice = (products) => {
-    return products.reduce((acc, current) => {
+export const getTotalPrice = (cartList) => {
+    return cartList.reduce((acc, current) => {
         return {
             price: acc.price + Number(current.price) * Number(current.qty),
             Originalprice: acc.Originalprice + Number(current.Originalprice) * Number(current.qty),
