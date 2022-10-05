@@ -13,6 +13,7 @@
     "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
     "dayjs": "^1.11.5",
+    "eslint": "^8.24.0",
     "jsonwebtoken": "^8.5.1",
     "miragejs": "^0.1.45",
     "mockman-js": "^1.1.5",
