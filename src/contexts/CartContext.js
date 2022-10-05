@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, {createContext, useContext, useState} from 'react'
 import {getCartService, addToCartService,removeFromCartService,updataProductQuantityService} from '../services'
 const CartContext = createContext(null)
