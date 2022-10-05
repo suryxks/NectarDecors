@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React,{ createContext, useContext, useReducer } from "react";
 import { useData } from "./DataContext.jsx";
 import { productsFilterReducer } from "../Reducers/productsFilterReducer";
