@@ -37,13 +37,13 @@ html{
 .btn-cta-vertical {
   width: 100%;
   display: inline-block;
-  background-color: var(--cta);
   color: var(--white);
   border: none;
-  border-radius: 0.3rem;
+  border-radius: 4px;
   margin-top: 0.5rem;
   padding: 0.4rem 0;
   cursor: pointer;
+  background: linear-gradient(to bottom, var(--ctalight),var(--cta));
 }
 .wishlist-icon {
   border: 2px solid var(--border);

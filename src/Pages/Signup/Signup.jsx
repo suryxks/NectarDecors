@@ -1,49 +1,64 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import { Navbar } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import axios from "axios";
+import { useForm } from "../../hooks/useForm";
+import { signUpService } from "../../services";
 import "./Signup.css";
+import { useEffect } from "react";
+const initialState = {
+  email: "",
+  password: "",
+};
+
 export const Signup = () => {
   const navigate = useNavigate();
-  const { setAuthState } = useAuth();
-  const [formValues, setFormValues] = useState({
-    email: "",
-    password: ""
-  });
-  const { email, password } = formValues;
-  const signupHandler = async (email, password) => {
+  const { setAuthState, authState} = useAuth();
+  const signupHandler = async ({ email, password }) => {
     try {
-      const { data } = await axios.post(`/api/auth/signup`, {
-        email: email,
-        password: password
-      });
-      const { createdUser, encodedToken } = data;
+      const { createdUser, encodedToken } = await signUpService({ email, password});
       setAuthState({
         token: encodedToken,
-        userInfo: createdUser
+        userInfo: createdUser,
+        isAuthenticated: true
       });
-
       navigate("/");
-
-      localStorage.setItem("token", encodedToken);
-      localStorage.setItem("userInfo", createdUser);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
+  const { data, handleChange, handleSubmit, errors } = useForm({
+    intitalValues: initialState,
+    onSubmit: signupHandler,
+    validations: {
+      email: {
+        pattern: {
+          value: "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",
+          message: "Please enter a valid email",
+        },
+      },
+      password: {
+        custom: {
+          isValid: (value) => value.length > 6,
+          message: "Password should be longer than six characters",
+        },
+      },
+    },
+  });
+  const { email, password } = data;
+
+  useEffect(() => {
+    localStorage.setItem("token", authState.token);
+    localStorage.setItem("userInfo", authState.userInfo);
+  }, [authState])
+  
   return (
     <div>
       <Navbar />
 
       <div className="form-container display">
-        <form
-          className="form-grp"
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-        >
-          <label className="heading-md fw-bold  text-left " for="email">
+        <form className="form-grp" onSubmit={handleSubmit}>
+          <label className="heading-md fw-bold  text-left " htmlFor="email">
             Email address
           </label>
           <input
@@ -51,38 +66,26 @@ export const Signup = () => {
             placeholder="johndoe@something.com"
             name="email"
             value={email}
-            onChange={(e) => {
-              setFormValues((state) => ({
-                ...state,
-                email: e.target.value
-              }));
-            }}
+            required={true}
+            onChange={(e) => handleChange("email", e)}
           />
-          <label className="heading-md fw-bold  text-left" for="password">
+          {errors.email && <p className="error">{errors.email}</p>}
+          <label className="heading-md fw-bold  text-left" htmlFor="password">
             Enter Password
           </label>
           <input
             type="password"
             name="password"
             value={password}
-            onChange={(e) => {
-              setFormValues((state) => ({
-                ...state,
-                password: e.target.value
-              }));
-            }}
+            required={true}
+            onChange={(e) => handleChange("password", e)}
           />
+          {errors.password && <p className="error">{errors.password}</p>}
           <div className="form-accept-signup">
             <input type="checkbox" />
             <label>I accept all terms and conditions</label>
           </div>
-          <button
-            className="btn-cta"
-            onClick={(e) => {
-              e.preventDefault();
-              signupHandler(email, password);
-            }}
-          >
+          <button className="btn-cta" onClick={handleSubmit}>
             Sign Up
           </button>
         </form>

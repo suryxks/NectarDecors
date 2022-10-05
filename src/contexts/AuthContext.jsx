@@ -1,26 +1,23 @@
-import { createContext, useContext, useState } from "react";
+/* eslint-disable react/prop-types */
+import React,{ createContext, useContext, useState } from "react";
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState({
-    token: "",
-    userInfo: {}
+    token: localStorage.getItem('token') || "",
+    userInfo: JSON.parse(localStorage.getItem('userInfo')) || {},
+    isAuthenticated: localStorage.getItem('token')?true:false,
   });
-  const isAuthenticated = () => {
-    if (localStorage.getItem("token")) {
-      return true;
-    }
-    return false;
-  };
+ 
   const logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userInfo");
-    setAuthState({ token: "", userInfo: {} });
+    setAuthState({ token: "", userInfo: {} ,isAuthenticated:false});
+    localStorage.clear();
+    
   };
   return (
     <AuthContext.Provider
-      value={{ authState, setAuthState, isAuthenticated, logout }}
+      value={{ authState, setAuthState, logout }}
     >
       {children}
     </AuthContext.Provider>

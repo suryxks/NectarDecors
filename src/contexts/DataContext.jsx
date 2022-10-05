@@ -1,23 +1,22 @@
-import { createContext, useState, useContext, useEffect } from "react";
-import axios from "axios";
+/* eslint-disable react/prop-types */
+import React,{ createContext, useState, useContext, useEffect } from "react";
+import { getproductsService } from "../services";
 const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [featured, setFeatured] = useState([]);
   const [products, setProducts] = useState([]);
-  const [err, setErr] = useState("");
   useEffect(() => {
     getProducts();
   }, []);
   const getProducts = async () => {
     try {
-      const { data: productsData, status } = await axios.get("/api/products");
-
-      status === 200
-        ? setProducts([...productsData.products])
-        : setProducts([]);
-    } catch (err) {}
+      const data = await getproductsService();
+      setProducts(data.products);
+    } catch (err) {
+      console.error(err)
+    }
   };
 
   return (

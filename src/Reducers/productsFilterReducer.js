@@ -1,5 +1,5 @@
 export const productsFilterReducer = (state, action) => {
-  const { category, rating, price, priceRangeSlider } = state;
+  const { category } = state;
   switch (action.type) {
     case "CLEAR": {
       return {

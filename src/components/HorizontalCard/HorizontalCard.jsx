@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { useCart } from "../../contexts/CartContext";
 import {useWishList} from "../../contexts/WishListContext"
@@ -5,9 +6,9 @@ import "./HorizontalCard.css";
 import toast from 'react-hot-toast';
 const HorizontalCard = ({ product }) => {
   const {imageUrl, title, price, description,Originalprice,discount}=product;
-  const {addToCart}=useCart();useWishList
-  const {wishList,addToWishList,deleteFromWishlist }=useWishList();
-  const token=JSON.parse(localStorage.getItem('token'));
+  const {addToCart}=useCart();
+  const {addToWishList }=useWishList();
+  const token = JSON.parse(localStorage.getItem("token"));
   return (
     <div className="horizontal-card">
       <img src={imageUrl} />

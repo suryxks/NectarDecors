@@ -1,4 +1,6 @@
-import toast, { Toaster } from 'react-hot-toast';
+/* eslint-disable react/prop-types */
+import React from 'react';
+import toast from 'react-hot-toast';
 
 const CartCard = ({ product, updateQuantityOfProduct, removeProduct, addToWishList }) => {
   const { imageUrl, title, price, description, qty, _id: id, Originalprice, discount } = product;

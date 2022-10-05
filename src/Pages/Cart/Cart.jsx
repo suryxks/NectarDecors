@@ -1,18 +1,15 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Navbar } from '../../components'
 import { useCart } from '../../contexts/CartContext'
 import CartCard from '../../components/HorizontalCard/CartCard'
 import { useWishList } from '../../contexts/WishListContext';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
+import { getTotalPrice } from '../../Utils';
 import './Cart.css'
 const Cart = () => {
-    const { cart: cartList, addToCart, updateQuantityOfProduct, removeProduct } = useCart();
-    const { wishList, addToWishList } = useWishList();
-    console.log(cartList)
-    const priceDetails = cartList.reduce((acc, current) => {
-
-        return { price: acc.price + Number(current.price)*Number(current.qty), Originalprice: acc.Originalprice + Number(current.Originalprice)*Number(current.qty), discount: acc.discount + Number(current.qty)*(Number(current.Originalprice) - Number(current.price)) }
-    },{price:0,Originalprice:0,discount:0})
+    const { cart: cartList,  updateQuantityOfProduct, removeProduct } = useCart();
+    const {  addToWishList } = useWishList();
+    const priceDetails = getTotalPrice(cartList);
 
     return (
         <div>

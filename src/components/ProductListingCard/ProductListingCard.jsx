@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import "./ProductListingCard.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Rating from "@mui/material/Rating";
 import { useWishList } from "../../contexts/WishListContext";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 export const ProductListingCard = ({
   _id,
   imageUrl,

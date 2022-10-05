@@ -1,43 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import "./Home.css";
 import { Navbar, HorizontalCard } from "../../components";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import { useData } from "../../contexts/DataContext";
 import { useProducts } from "../../contexts/ProductContext";
+import {getCategoriesService} from '../../services'
 const Home = () => {
-  const [err, setErr] = useState("");
-  const { categories, featured, setFeatured, setCategories } = useData();
+  const { categories, featured, setFeatured, setCategories,products} = useData();
   const { dispatch} = useProducts();
   useEffect(() => {
     getCategories();
-    getFeatured();
+    getFeaturedProdcts(products);
   }, []);
   const getCategories = async () => {
     try {
-      const { data: categoriesdata, status } = await axios.get(
-        "/api/categories"
-      );
-      status === 200
-        ? setCategories([...categoriesdata.categories])
-        : setCategories([]);
+     const data= await getCategoriesService()
+      setCategories([...data.categories]);
     } catch (err) {
-      setErr("server not responding");
+      console.error(err);
     }
   };
-  const getFeatured = async () => {
-    try {
-      const { data: productsData, status } = await axios.get("/api/products");
-
-      status === 200
-        ? setFeatured(
-            productsData.products.filter((item) => item.featured === true)
-          )
-        : setFeatured([]);
-    } catch (err) {
-      setErr("server not responding");
-    }
+  const getFeaturedProdcts = (products) => {
+    const featuredProdcts=products.filter((item) => item.featured === true)
+    setFeatured(featuredProdcts)
   };
 
   return (

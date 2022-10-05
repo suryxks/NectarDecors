@@ -1,40 +1,62 @@
-import { Navbar } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext.jsx";
-import axios from "axios";
+import { useForm } from "../../hooks/useForm";
+import { Navbar } from "../../components";
+import { loginService } from "../../services";
 
 export const Signin = () => {
-  const [formValues, setFormValues] = useState({
+  const initialState = {
     email: "",
-    password: ""
-  });
-  const { email, password } = formValues;
-
-  const navigate = useNavigate();
-  const { setAuthState } = useAuth();
-  const guest={
-    email:'adarshbalika@gmail.com',
-    password: 'adarshBalika123'
-  }
+    password: "",
+  };
+  const guest = {
+    email: "adarshbalika@gmail.com",
+    password: "adarshBalika123",
+  };
   const loginHandler = async (Logincredentials) => {
     try {
-      const response = await axios.post("/api/auth/login", Logincredentials);
-
-      if (response.status === 200) {
-        const { foundUser, encodedToken } = await response.data;
-        localStorage.setItem("token", JSON.stringify(encodedToken));
-        localStorage.setItem("userInfo", JSON.stringify(foundUser));
-        setAuthState({
-          token: encodedToken,
-          userInfo: foundUser
-        });
-        navigate("/");
-      }
+      const { foundUser, encodedToken } = await loginService(Logincredentials);
+      setAuthState({
+        token: encodedToken,
+        userInfo: foundUser,
+        isAuthenticated: true,
+      });
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
+
+  const { data, handleChange, handleSubmit, errors } = useForm({
+    intitalValues: initialState,
+    onSubmit: loginHandler,
+    validations: {
+      email: {
+        pattern: {
+          // eslint-disable-next-line no-useless-escape
+          value: "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",
+          message: "Please enter a valid email",
+        },
+      },
+      password: {
+        custom: {
+          isValid: (value) => value.length > 6,
+          message: "Password should be longer than six characters",
+        },
+      },
+    },
+  });
+  const { email, password } = data;
+
+  const navigate = useNavigate();
+  const { setAuthState, authState } = useAuth();
+  
+  useEffect(() => {
+    localStorage.setItem("token", JSON.stringify(authState.token));
+    localStorage.setItem("userInfo", JSON.stringify(authState.userInfo));
+  }, [authState]);
+
   return (
     <div>
       <Navbar />
@@ -52,10 +74,9 @@ export const Signin = () => {
             placeholder="johndoe@something.com"
             name="email"
             value={email}
-            onChange={(e) => {
-              setFormValues((state) => ({ ...state, email: e.target.value }));
-            }}
+            onChange={(e) => handleChange("email", e)}
           />
+          <div>{errors.email && <p className="error">{errors.email}</p>}</div>
           <label
             className="heading-md fw-bold active text-left"
             htmlFor="password"
@@ -66,27 +87,16 @@ export const Signin = () => {
             type="password"
             name="password"
             value={password}
-            onChange={(e) => {
-              setFormValues((state) => ({
-                ...state,
-                password: e.target.value
-              }));
-            }}
+            onChange={(e) => handleChange("password", e)}
           />
+          {errors.password && <p className="error">{errors.password}</p>}
           <div className="form-accept">
             <div>
               <input type="checkbox" />
               <label>Remember Me</label>
             </div>
-            <a href="#">Forgot Password?</a>
           </div>
-          <button
-            className="btn-cta"
-            onClick={(e) => {
-              e.preventDefault();
-              loginHandler({ email, password });
-            }}
-          >
+          <button className="btn-cta" onClick={handleSubmit}>
             Login
           </button>
           <button

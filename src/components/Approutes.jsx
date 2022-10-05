@@ -1,4 +1,5 @@
-import { Routes, Route,Navigate ,Outlet} from "react-router-dom";
+import React from "react";
+import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 import {
   Home,
   ProductListing,
@@ -25,8 +26,9 @@ const Approutes = () => {
   );
 };
 const ProtectedRoutes=()=>{
-  const {isAuthenticated}=useAuth();
-  return isAuthenticated()?<Outlet/>:<Navigate to='/signin'/>
+  const { authState } = useAuth();
+  const { isAuthenticated } = authState;
+  return isAuthenticated?<Outlet/>:<Navigate to='/signin'/>
 }
 export { Approutes };
  
