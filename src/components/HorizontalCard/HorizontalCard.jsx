@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { useCart } from "../../contexts/CartContext";
 import {useWishList} from "../../contexts/WishListContext"

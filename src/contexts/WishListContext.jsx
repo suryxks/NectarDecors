@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React,{ createContext, useContext, useState } from 'react';
 import { addToWishListService ,deleteFromWishListService} from '../services';
 const WishListContext = createContext(null);

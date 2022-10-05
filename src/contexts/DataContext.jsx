@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React,{ createContext, useState, useContext, useEffect } from "react";
 import { getproductsService } from "../services";
 const DataContext = createContext();
