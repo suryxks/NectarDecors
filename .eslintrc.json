@@ -11,11 +11,10 @@
     "overrides": [
     ],
     "parserOptions": {
-            "ecmaVersion": "latest",
-            "sourceType": "module",
-            "ecmaFeatures": {
-              "modules": true
-            }
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+          "jsx": true
           
     },
     "plugins": [
