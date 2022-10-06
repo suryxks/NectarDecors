@@ -8,7 +8,6 @@ import {
   Signin,
   Signup
 } from "../Pages";
-import Mockman from "mockman-js";
 import {useAuth} from './../contexts/AuthContext'
 const Approutes = () => {
   return (
