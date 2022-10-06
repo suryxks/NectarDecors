@@ -1,6 +1,6 @@
 import React, { useEffect} from "react";
 import "./Home.css";
-import { Navbar, HorizontalCard } from "../../components";
+import {  HorizontalCard } from "../../components";
 import { Link } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import { useData } from "../../contexts/DataContext";
@@ -28,7 +28,6 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar />
       <Toaster/>
       <section className="hero-sec">
         <div className="hero-txt">

@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 import { useForm } from "../../hooks/useForm";
-import { Navbar } from "../../components";
+// import { Navbar } from "../../components";
 import { loginService } from "../../services";
 
 export const Signin = () => {
@@ -59,7 +59,7 @@ export const Signin = () => {
 
   return (
     <div>
-      <Navbar />
+     
 
       <div className="form-container display">
         <form className="form-grp">
@@ -73,6 +73,7 @@ export const Signin = () => {
             type="email"
             placeholder="johndoe@something.com"
             name="email"
+            id="email"
             value={email}
             onChange={(e) => handleChange("email", e)}
           />
@@ -86,6 +87,7 @@ export const Signin = () => {
           <input
             type="password"
             name="password"
+            id="password"
             value={password}
             onChange={(e) => handleChange("password", e)}
           />
@@ -96,11 +98,12 @@ export const Signin = () => {
               <label>Remember Me</label>
             </div>
           </div>
-          <button className="btn-cta" onClick={handleSubmit}>
+          <button className="btn-cta" id="login" onClick={handleSubmit}>
             Login
           </button>
           <button
             className="btn-cta"
+            id="login-guest"
             onClick={(e) => {
               e.preventDefault();
               loginHandler(guest);

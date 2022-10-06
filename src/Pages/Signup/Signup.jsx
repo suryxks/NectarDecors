@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar } from "../../components";
+// import { Navbar } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useForm } from "../../hooks/useForm";
@@ -54,8 +54,6 @@ export const Signup = () => {
   
   return (
     <div>
-      <Navbar />
-
       <div className="form-container display">
         <form className="form-grp" onSubmit={handleSubmit}>
           <label className="heading-md fw-bold  text-left " htmlFor="email">

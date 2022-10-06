@@ -1,5 +1,5 @@
 import React from 'react'
-import {Navbar ,ProductListingCard}from '../../components'
+ import {ProductListingCard}from '../../components'
 import {useWishList} from '../../contexts/WishListContext';
 import { useCart } from '../../contexts/CartContext';
 import toast, { Toaster } from 'react-hot-toast';
@@ -10,7 +10,6 @@ const WishList=()=>{
    
     return(
         <div>
-         <Navbar/>
          <h1>My WishList ({wishList.length})</h1>
          <Toaster/>
          <div className='product-listing'>

@@ -20,7 +20,6 @@ const Approutes = () => {
 			</Route>
       <Route path="/signin" element={<Signin />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/mockman" element={<Mockman />} />
     </Routes>
   );
 };

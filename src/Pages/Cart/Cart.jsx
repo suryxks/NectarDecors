@@ -1,5 +1,4 @@
 import React from 'react'
-import { Navbar } from '../../components'
 import { useCart } from '../../contexts/CartContext'
 import CartCard from '../../components/HorizontalCard/CartCard'
 import { useWishList } from '../../contexts/WishListContext';
@@ -13,7 +12,6 @@ const Cart = () => {
 
     return (
         <div>
-            <Navbar />
             <Toaster/>
             <h1 className="heading-xl text-center">{`My Cart (${cartList.length})`}</h1>
             <div className="cart">
