@@ -1,16 +1,16 @@
 import React from "react";
 import "./ProductListing.css";
 // import { Navbar } from "../../components";
-import { useProducts } from "../../contexts/ProductContext";
+import { useProducts ,useCart,useWishList} from "../../contexts"
 import { ProductListingCard } from "../../components/ProductListingCard/ProductListingCard";
 import { ProductFilters } from "./ProductFilters";
-import { useCart } from "../../contexts/CartContext";
+
 import toast, { Toaster } from "react-hot-toast";
 const ProductListing = () => {
   const { dispatch, filter, filterdProducts } = useProducts();
   const {  addToCart } = useCart();
   const token = JSON.parse(localStorage.getItem("token"));
-
+  const { wishList, addToWishList, deleteFromWishlist } = useWishList();
   return (
     <div className="products-page">
       
@@ -46,33 +46,30 @@ const ProductListing = () => {
         </div>
         <div className="product-listing">
           {filterdProducts.map((product) => {
-            const {
-              _id,
-              title,
-              description,
-              price,
-              discount,
-              imageUrl,
-              rating,
-              Originalprice,
-            } = product;
+            const {_id} = product;
             const addProductToCart = () => {
               addToCart(token, product);
               toast.success("Item added to Cart");
             };
+            const isPresentInWishList = wishList.find((item) => item._id === _id) ? true : false;
+            const addProductToWishList=() => {
+              addToWishList(token, product);
+              toast.success("item added to wishlist");
+              
+            }
+            const removeFromWishList = () => {
+              deleteFromWishlist(token, _id)
+              toast.success("item removed from wishlist");
+            }
             return (
               <ProductListingCard
                 _id={_id}
                 key={_id}
-                imageUrl={imageUrl}
-                title={title}
-                price={price}
-                discount={discount}
-                description={description}
-                Originalprice={Originalprice}
-                rating={rating}
                 product={product}
                 onAddtocart={addProductToCart}
+                onWishListAdd={addProductToWishList}
+                onWishListRemove={removeFromWishList}
+                isPresentInWishList={isPresentInWishList}
               />
             );
           })}

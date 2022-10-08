@@ -2,7 +2,6 @@ import React from "react";
 import 'whatwg-fetch'
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
-// import { createMemoryHistory } from 'history';
 import { screen,waitFor} from "@testing-library/react";
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
@@ -23,13 +22,10 @@ describe('Sign In form renders with the required feilds and works', () => {
     afterEach(() => server.resetHandlers())
     beforeEach(() => {
         console.error = jest.fn()
-        console.error('you cant see me')
       })
       
       afterEach(() => {
-        console.error('you cant see me')
-        console.error = original
-        
+          console.error = original;
       })
 
 
