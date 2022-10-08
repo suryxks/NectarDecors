@@ -1,6 +1,5 @@
 import React from "react";
 import "./ProductListing.css";
-// import { Navbar } from "../../components";
 import { useProducts ,useCart,useWishList} from "../../contexts"
 import { ProductListingCard } from "../../components/ProductListingCard/ProductListingCard";
 import { ProductFilters } from "./ProductFilters";

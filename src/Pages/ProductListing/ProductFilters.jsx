@@ -15,7 +15,7 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
           Clear
         </button>
       </div>
-      <div className="filter-wrapper">
+      <div className="filter-wrapper" role="form">
         <h3 className="heading-md text-left active">Category</h3>
         <div className="filter-value filter">
           <label htmlFor="category">
