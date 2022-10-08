@@ -1,5 +1,5 @@
-export { AuthProvider } from './AuthContext';
-export { CartProvider} from './CartContext';
-export { DataProvider } from './DataContext';
-export { WishListProvider } from './WishListContext';
-export { ProductsProvider } from './ProductContext';
+export { AuthProvider,useAuth } from './AuthContext';
+export { CartProvider, useCart } from './CartContext';
+export { DataProvider, useData } from './DataContext';
+export { WishListProvider, useWishList } from './WishListContext';
+export { ProductsProvider, useProducts } from './ProductContext';
