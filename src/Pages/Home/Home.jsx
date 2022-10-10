@@ -4,14 +4,15 @@ import {  HorizontalCard } from "../../components";
 import { Link } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import { useData } from "../../contexts/DataContext";
-import { useProducts } from "../../contexts/ProductContext";
+// import { useProducts } from "../../contexts/ProductContext";
 import {getCategoriesService} from '../../services'
 const Home = () => {
-  const { categories, featured, setFeatured, setCategories,products} = useData();
-  const { dispatch} = useProducts();
+  const { categories, setCategories,products,dispatch,getProducts} = useData();
+ 
   useEffect(() => {
+    getProducts()
     getCategories();
-    getFeaturedProdcts(products);
+    
   }, []);
   const getCategories = async () => {
     try {
@@ -21,11 +22,8 @@ const Home = () => {
       console.error(err);
     }
   };
-  const getFeaturedProdcts = (products) => {
-    const featuredProdcts=products.filter((item) => item.featured === true)
-    setFeatured(featuredProdcts)
-  };
-
+  const featuredProdcts = products.filter((item) => item.featured === true)
+  
   return (
     <div>
       <Toaster/>
@@ -79,7 +77,7 @@ const Home = () => {
       </section>
       <h1 className="heading-xl text-center">Featured Products</h1>
       <section className="special">
-        {featured.map((product) => (
+        {featuredProdcts.map((product) => (
           <HorizontalCard
            product={product}
             key={product._id}

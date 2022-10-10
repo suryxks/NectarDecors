@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ProductListing.css";
-import { useProducts ,useCart,useWishList} from "../../contexts"
+import {useCart,useWishList, useData} from "../../contexts"
 import { ProductListingCard } from "../../components/ProductListingCard/ProductListingCard";
 import { ProductFilters } from "./ProductFilters";
 
 import toast, { Toaster } from "react-hot-toast";
 const ProductListing = () => {
-  const { dispatch, filter, filterdProducts } = useProducts();
+  const { dispatch, filter, filterdProducts ,getProducts} = useData();
   const {  addToCart } = useCart();
   const token = JSON.parse(localStorage.getItem("token"));
   const { wishList, addToWishList, deleteFromWishlist } = useWishList();
+  useEffect(() => {
+    getProducts(); 
+  },[])
   return (
     <div className="products-page">
       
