@@ -1,12 +1,13 @@
 import React from "react";
 import { screen } from "@testing-library/react";
-import 'whatwg-fetch'
-import { setupServer } from "msw/node";
-import {rest} from 'msw'
 import '@testing-library/jest-dom';
-import { appRender} from '../../test-utils';
-import { ProductListing } from "../../Pages";
-const fakeProducts = [
+import 'whatwg-fetch';
+import { setupServer } from "msw/node";
+import { rest } from 'msw';
+import { appRender } from "../../test-utils";
+import { WishList } from "../../Pages";
+
+const wishListData= [
     {
         _id: '1',
         title: "Decorly",
@@ -34,37 +35,25 @@ const fakeProducts = [
         rating: "4.3",
         imageUrl:
           "https://res.cloudinary.com/dxdefqayz/image/upload/c_scale,w_210/v1647235257/NectarDecors/Plants/5b20ab5b-9212-4311-840d-d6b879db981a1645262721968ArtificialFlowersandPlants1_pes1hg.jpg"
-      },
+    }
 ]
 const server = setupServer(
-    rest.get('/api/products', (req,res, ctx) => {
-        return res(ctx.json({products:[...fakeProducts]}))
-    }),
+    rest.get('/api/user/wishlist', (req, res, ctx) => {
+        return res(ctx.json({wishlist:[...wishListData]}))
+    })
 )
+beforeAll(() => server.listen({ onUnhandledRequest: 'error' }))
 beforeEach(() => {
-    console.error = jest.fn()
-  })
-  
-beforeAll(() => server.listen({ onUnhandledRequest: "error" }))
+    console.error = jest.fn();
+})
 afterAll(() => server.close());
-afterEach(()=>server.resetHandlers())
-  
-describe('Product listing page renders with filters form and products card', () => {
-    test('products page renders with form ,combobox for sorting', () => {
-        appRender(<ProductListing />);
-        const filtersHeading = screen.getByText(/filters/i);
-        const filtersForm = screen.getByRole('form');
-        const sortOptions = screen.getByRole('combobox');
-        expect(sortOptions).toBeInTheDocument();
-        expect(filtersForm).toBeInTheDocument();
-        expect(filtersHeading).toBeInTheDocument();
+afterEach(() => server.resetHandlers())
 
-    })
-    test('Product cards are rendered on the inital request', async() => {
-        appRender(<ProductListing />)
-        const productsList = await screen.findAllByTestId('product-card')
-        expect(productsList).toHaveLength(fakeProducts.length)
-    })
-    
+test('wish list page renders with products added to wishlist', async () => {
+    appRender(<WishList />)
+    const wishListheading = screen.getByTestId("wishlist-heading");
+    const wishListItems = await screen.findAllByTestId('product-card')
+    expect(wishListItems).toHaveLength(wishListData.length)
+    expect(wishListheading).toHaveTextContent(`My WishList(${wishListData.length})`)
 
 })

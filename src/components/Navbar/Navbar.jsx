@@ -12,8 +12,8 @@ const Navbar = () => {
   const { authState, logout } = useAuth();
   const { isAuthenticated } = authState;
   const navigate = useNavigate();
-  const {cart}=useCart();
-  const {wishList}=useWishList();
+  const {cart,setCart}=useCart();
+  const {wishList,setWishList}=useWishList();
   return (
     <div className="nav-bar">
       <nav className="header-nav">
@@ -28,6 +28,8 @@ const Navbar = () => {
             className="btn-cta text-center"
             onClick={() => {
               if (isAuthenticated) {
+                setCart([])
+                setWishList([])
                 logout();
               }
               navigate("/signin");

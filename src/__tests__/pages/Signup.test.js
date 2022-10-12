@@ -6,16 +6,16 @@ import { screen,waitFor} from "@testing-library/react";
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import { appRender} from '../../test-utils';
-import { Signin } from "../../Pages";
+import { Signup } from "../../Pages";
 
 const server = setupServer(
-    rest.post('/api/auth/login', (res, req, ctx) => {
-        return res(ctx.json({ foundUser: { email: 'adarshbalika@gmail.com', cart: [], wishList: [] }, encodedToken: 'abcdef' }))
+    rest.post('/api/auth/signup', (res, req, ctx) => {
+        return res(ctx.json({ createdUser: { email: 'adarshbalika@gmail.com', cart: [], wishList: [] }, encodedToken: 'abcdef' }))
     })
 )
 
   
-describe('Sign In form renders with the required feilds and works', () => {
+describe('Sign Up form renders with the required feilds and works', () => {
     beforeAll(() => server.listen({onUnhandledRequest: 'error'}))
     afterAll(() => server.close())
     afterEach(() => server.resetHandlers())
@@ -26,8 +26,8 @@ describe('Sign In form renders with the required feilds and works', () => {
      
 
 
-    test('Renders a form with login ,Login as guest buttons and inputs for email and password and naviagtes to home page on successful login', async() => {
-        appRender(<Signin />)
+    test('Renders a form with sign up button and inputs for email and password and naviagtes to home page on successful signup', async() => {
+        appRender(<Signup />)
         const user = userEvent.setup()
         const userDetails = {
             email: 'adarshbalika@gmail.com',
@@ -35,18 +35,16 @@ describe('Sign In form renders with the required feilds and works', () => {
         }
         const emailInput = screen.getByLabelText(/email/i);
         const passwordInput = screen.getByLabelText(/password/i);
-        const loginButton = screen.getByText(/Login/i, { selector: 'button', exact: true, ignore:'#login-guest'});
-        const guestLoginButton = screen.getByText(/login as guest/i);
+        const signupButton = screen.getByText(/sign up/i);
         expect(emailInput).toBeInTheDocument();
         expect(passwordInput).toBeInTheDocument();
-        expect(loginButton).toBeInTheDocument();
-        expect(guestLoginButton).toBeInTheDocument();
+        expect(signupButton).toBeInTheDocument();
         
        await user.type(emailInput, userDetails.email);
        expect(emailInput).toHaveValue(userDetails.email);
        await user.type(passwordInput, userDetails.password);
-       expect(passwordInput).toHaveValue(userDetails.password);
-        await user.click(guestLoginButton);
+        expect(passwordInput).toHaveValue(userDetails.password);
+        await user.click(signupButton);
         await waitFor(()=>expect(window.location.pathname).toBe('/'));
         
     })

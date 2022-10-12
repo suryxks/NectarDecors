@@ -6,7 +6,7 @@ const CartCard = ({ product, updateQuantityOfProduct, removeProduct, addToWishLi
   const { imageUrl, title, price, description, qty, _id: id, Originalprice, discount } = product;
   const token = JSON.parse(localStorage.getItem('token'));
   return (
-    <div className="horizontal-card" key={id}>
+    <div className="horizontal-card" key={id} data-testid="cart-card">
       <img src={imageUrl} />
       <div className="product-details">
         <h3 className="heading-md active">{title}</h3>

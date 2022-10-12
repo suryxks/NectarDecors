@@ -1,5 +1,5 @@
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 import { useForm } from "../../hooks/useForm";
 import { loginService } from "../../services";
@@ -16,11 +16,14 @@ export const Signin = () => {
   const loginHandler = async (Logincredentials) => {
     try {
       const { foundUser, encodedToken } = await loginService(Logincredentials);
+      console.log(foundUser,encodedToken)
       setAuthState({
         token: encodedToken,
         userInfo: foundUser,
         isAuthenticated: true,
       });
+      localStorage.setItem("token", JSON.stringify(encodedToken));
+      localStorage.setItem("userInfo", JSON.stringify(foundUser));
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -49,12 +52,8 @@ export const Signin = () => {
   const { email, password } = data;
 
   const navigate = useNavigate();
-  const { setAuthState, authState } = useAuth();
-  
-  useEffect(() => {
-    localStorage.setItem("token", JSON.stringify(authState.token));
-    localStorage.setItem("userInfo", JSON.stringify(authState.userInfo));
-  }, [authState]);
+  const { setAuthState} = useAuth();
+
 
   return (
     <div>

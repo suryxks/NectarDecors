@@ -1,11 +1,9 @@
 import React from "react";
-// import { Navbar } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useForm } from "../../hooks/useForm";
 import { signUpService } from "../../services";
 import "./Signup.css";
-import { useEffect } from "react";
 const initialState = {
   email: "",
   password: "",
@@ -13,7 +11,7 @@ const initialState = {
 
 export const Signup = () => {
   const navigate = useNavigate();
-  const { setAuthState, authState} = useAuth();
+  const { setAuthState} = useAuth();
   const signupHandler = async ({ email, password }) => {
     try {
       const { createdUser, encodedToken } = await signUpService({ email, password});
@@ -22,6 +20,8 @@ export const Signup = () => {
         userInfo: createdUser,
         isAuthenticated: true
       });
+      localStorage.setItem("token", JSON.stringify(encodedToken));
+      localStorage.setItem("userInfo", JSON.stringify(createdUser));
       navigate("/");
     } catch (error) {
       console.error(error);
@@ -46,11 +46,6 @@ export const Signup = () => {
     },
   });
   const { email, password } = data;
-
-  useEffect(() => {
-    localStorage.setItem("token", authState.token);
-    localStorage.setItem("userInfo", authState.userInfo);
-  }, [authState])
   
   return (
     <div>
@@ -64,6 +59,7 @@ export const Signup = () => {
             placeholder="johndoe@something.com"
             name="email"
             value={email}
+            id="email"
             required={true}
             onChange={(e) => handleChange("email", e)}
           />
@@ -74,6 +70,7 @@ export const Signup = () => {
           <input
             type="password"
             name="password"
+            id="password"
             value={password}
             required={true}
             onChange={(e) => handleChange("password", e)}

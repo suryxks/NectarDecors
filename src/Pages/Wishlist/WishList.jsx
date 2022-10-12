@@ -13,7 +13,7 @@ const WishList = () => {
   }, [])
   return (
     <div>
-      <h1>My WishList ({wishList.length})</h1>
+      <h1 data-testid="wishlist-heading">My WishList({wishList.length})</h1>
       <Toaster />
       <div className="product-listing">
         {wishList.map(product => {
