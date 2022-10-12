@@ -24,9 +24,7 @@ describe('Sign In form renders with the required feilds and works', () => {
         console.error = jest.fn()
       })
       
-      afterEach(() => {
-          console.error = original;
-      })
+     
 
 
     test('Renders a form with login ,Login as guest buttons and inputs for email and password and naviagtes to home page on successful login', async() => {

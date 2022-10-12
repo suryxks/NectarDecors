@@ -3,13 +3,23 @@ import "./ProductListing.css";
 import {useCart,useWishList, useData} from "../../contexts"
 import { ProductListingCard } from "../../components/ProductListingCard/ProductListingCard";
 import { ProductFilters } from "./ProductFilters";
-
+import {
+  filterByCategory,
+  filterByRating,
+  sortByPrice,
+  filterByPrice,
+} from '../../Utils'
 import toast, { Toaster } from "react-hot-toast";
 const ProductListing = () => {
-  const { dispatch, filter, filterdProducts ,getProducts} = useData();
+  const { dispatch, filter,getProducts,products} = useData();
   const {  addToCart } = useCart();
   const token = JSON.parse(localStorage.getItem("token"));
   const { wishList, addToWishList, deleteFromWishlist } = useWishList();
+  const filteredByPrice = filterByPrice(products, filter)
+  const filterdByCategory = filterByCategory(filteredByPrice, filter)
+  const filteredByRating = filterByRating(filterdByCategory, filter)
+
+  const filterdProducts = sortByPrice(filteredByRating, filter)
   useEffect(() => {
     getProducts(); 
   },[])

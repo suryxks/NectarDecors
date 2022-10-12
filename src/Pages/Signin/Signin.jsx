@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 import { useForm } from "../../hooks/useForm";
-// import { Navbar } from "../../components";
 import { loginService } from "../../services";
 
 export const Signin = () => {

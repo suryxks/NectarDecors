@@ -4,13 +4,13 @@ import { useCart } from "../../contexts/CartContext";
 import {useWishList} from "../../contexts/WishListContext"
 import "./HorizontalCard.css";
 import toast from 'react-hot-toast';
-const HorizontalCard = ({ product }) => {
+const HorizontalCard = ({ product}) => {
   const {imageUrl, title, price, description,Originalprice,discount}=product;
   const {addToCart}=useCart();
   const {addToWishList }=useWishList();
   const token = JSON.parse(localStorage.getItem("token"));
   return (
-    <div className="horizontal-card">
+    <div className="horizontal-card" data-testid="featured">
       <img src={imageUrl} />
       <div className="product-details">
         <h3 className="heading-md active">{title}</h3>

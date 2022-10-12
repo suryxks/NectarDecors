@@ -2,12 +2,7 @@
 import React, {createContext, useState, useContext, useReducer} from 'react'
 import {getproductsService} from '../services'
 import {productsFilterReducer} from '../Reducers/productsFilterReducer'
-import {
-  filterByCategory,
-  filterByRating,
-  sortByPrice,
-  filterByPrice,
-} from '../Utils'
+
 const DataContext = createContext()
 
 const DataProvider = ({children}) => {
@@ -36,14 +31,7 @@ const DataProvider = ({children}) => {
   )
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
-  // useEffect(() => {
-  //   getProducts();
-  // }, []);
-  const filteredByPrice = filterByPrice(products, filter)
-  const filterdByCategory = filterByCategory(filteredByPrice, filter)
-  const filteredByRating = filterByRating(filterdByCategory, filter)
-
-  const filterdProducts = sortByPrice(filteredByRating, filter)
+  
   const getProducts = async () => {
     try {
       const data = await getproductsService()
@@ -63,7 +51,6 @@ const DataProvider = ({children}) => {
         setProducts,
         products,
         getProducts,
-        filterdProducts,
       }}
     >
       {children}

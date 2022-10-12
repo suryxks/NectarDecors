@@ -6,7 +6,6 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import {
   AuthProvider,
   DataProvider,
-  ProductsProvider,
   CartProvider,
   WishListProvider,
 } from './contexts'
@@ -18,7 +17,7 @@ const AllTheProviders = ({children}) => {
         <CartProvider>
           <WishListProvider>
             <DataProvider>
-              <ProductsProvider>{children}</ProductsProvider>
+              {children}
             </DataProvider>
           </WishListProvider>
         </CartProvider>
@@ -26,11 +25,8 @@ const AllTheProviders = ({children}) => {
     </Router>
   )
 }
-// export const createRouterWrapper = (history) => ({ children }) => (
-// <Router history={history}>{children}</Router>
-// );
-const appRender = (ui, options) =>
-  render(ui, {wrapper: AllTheProviders, ...options})
+
+const appRender = (ui, options) =>render(ui, {wrapper: AllTheProviders, ...options})
 
 export * from '@testing-library/react'
 export {appRender}

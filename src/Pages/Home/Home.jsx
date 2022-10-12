@@ -1,10 +1,9 @@
 import React, { useEffect} from "react";
 import "./Home.css";
-import {  HorizontalCard } from "../../components";
 import { Link } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import { useData } from "../../contexts/DataContext";
-// import { useProducts } from "../../contexts/ProductContext";
+import { FeaturedList } from "./FeaturedList";
 import {getCategoriesService} from '../../services'
 const Home = () => {
   const { categories, setCategories,products,dispatch,getProducts} = useData();
@@ -16,13 +15,13 @@ const Home = () => {
   }, []);
   const getCategories = async () => {
     try {
-     const data= await getCategoriesService()
+      const data = await getCategoriesService()
       setCategories([...data.categories]);
     } catch (err) {
       console.error(err);
     }
   };
-  const featuredProdcts = products.filter((item) => item.featured === true)
+  const featuredProducts = products.filter((item) => item.featured === true)
   
   return (
     <div>
@@ -59,11 +58,12 @@ const Home = () => {
               to='/products'
               key={category._id}
               className="category-link"
+              data-testid="categories-card"
               onClick={() => {
                 dispatch({ type: "CLEAR" })
                 dispatch({ type: TYPE })
               }}>
-            <div className="categories-card">
+            <div className="categories-card" >
               <a href="">
                 <img src={category.bannerImage} alt="plant" className="catrgory-image" />
               </a>
@@ -77,12 +77,7 @@ const Home = () => {
       </section>
       <h1 className="heading-xl text-center">Featured Products</h1>
       <section className="special">
-        {featuredProdcts.map((product) => (
-          <HorizontalCard
-           product={product}
-            key={product._id}
-          />
-        ))}
+       <FeaturedList featured={featuredProducts}/>
       </section>
     </div>
   );
