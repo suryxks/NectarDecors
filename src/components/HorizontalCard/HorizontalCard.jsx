@@ -1,13 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { useCart } from "../../contexts/CartContext";
-import {useWishList} from "../../contexts/WishListContext"
 import "./HorizontalCard.css";
 import toast from 'react-hot-toast';
-const HorizontalCard = ({ product}) => {
+const HorizontalCard = ({ product,onAddToCart,onAddToWishList}) => {
   const {imageUrl, title, price, description,Originalprice,discount}=product;
-  const {addToCart}=useCart();
-  const {addToWishList }=useWishList();
+  
   const token = JSON.parse(localStorage.getItem("token"));
   return (
     <div className="horizontal-card" data-testid="featured">
@@ -22,11 +19,11 @@ const HorizontalCard = ({ product}) => {
         </div>
         <div className="horizontal-card-btn">
           <button className="btn-cta" onClick={()=>{
-            addToCart(token,product);
+            onAddToCart(token,product);
             toast.success('Item added to cart')
           }}>Add to cart</button>
           <button className="btn-cta-outline" onClick={()=>{
-            addToWishList(token,product);
+            onAddToWishList(token,product);
             toast.success('Item added to wish List')
           }}>Add to Wishlist</button>
         </div>

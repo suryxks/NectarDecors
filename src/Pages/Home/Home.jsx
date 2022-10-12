@@ -2,12 +2,13 @@ import React, { useEffect} from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
-import { useData } from "../../contexts/DataContext";
-import { FeaturedList } from "./FeaturedList";
+import { useData ,useCart,useWishList} from "../../contexts";
+import HorizontalCard from "../../components/HorizontalCard/HorizontalCard";
 import {getCategoriesService} from '../../services'
 const Home = () => {
   const { categories, setCategories,products,dispatch,getProducts} = useData();
- 
+  const {addToCart}=useCart();
+  const {addToWishList }=useWishList();
   useEffect(() => {
     getProducts()
     getCategories();
@@ -77,7 +78,14 @@ const Home = () => {
       </section>
       <h1 className="heading-xl text-center">Featured Products</h1>
       <section className="special">
-       <FeaturedList featured={featuredProducts}/>
+       {featuredProducts.map((product) => (
+        <HorizontalCard
+         product={product}
+           key={product._id}
+           onAddToCart={addToCart}
+           onAddToWishList={addToWishList}
+        />
+      ))}
       </section>
     </div>
   );
