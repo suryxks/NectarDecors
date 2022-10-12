@@ -22,7 +22,7 @@ export const ProductListingCard = ({
     Originalprice,
   } = product
   return (
-    <div className="vertical-card" key={_id}>
+    <div className="vertical-card" key={_id} data-testid="product-card">
       <img src={imageUrl} alt={description} className="product-image" />
       {isPresentInWishList ? (
         <FavoriteIcon

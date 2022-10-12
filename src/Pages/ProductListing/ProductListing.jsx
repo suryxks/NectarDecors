@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./ProductListing.css";
 import {useCart,useWishList, useData} from "../../contexts"
 import { ProductListingCard } from "../../components/ProductListingCard/ProductListingCard";
-import { ProductFilters } from "./ProductFilters";
+import { ProductFilters } from "../../components/ProductFilterForm/ProductFilters";
 import {
   filterByCategory,
   filterByRating,
