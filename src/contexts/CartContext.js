@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, {createContext, useContext, useState} from 'react'
-import {getCartService, addToCartService,removeFromCartService,updataProductQuantityService} from '../services'
+import {getCartService, addToCartService,removeFromCartService,updateProductQuantityService} from '../services'
 const CartContext = createContext(null)
 
 export const CartProvider = ({children}) => {
@@ -34,7 +34,7 @@ export const CartProvider = ({children}) => {
   }
   const updateQuantityOfProduct = async (token, id, type) => {
     try {
-        const data = await updataProductQuantityService(token, id, type);
+        const data = await updateProductQuantityService(token, id, type);
       setCart(data.cart)
     } catch (error) {
         console.error(error);
