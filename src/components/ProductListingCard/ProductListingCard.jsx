@@ -28,9 +28,16 @@ export const ProductListingCard = ({
         <FavoriteIcon
           className="wishlist-icon active"
           onClick={onWishListRemove}
+          role="button"
+          data-testid="addedToWishlist"
         />
       ) : (
-        <FavoriteBorderIcon className="wishlist-icon" onClick={onWishListAdd} />
+          <FavoriteBorderIcon
+            className="wishlist-icon"
+            onClick={onWishListAdd}
+            role="button"
+            data-testid="notAddedToWishlist"
+          />
       )}
 
       <div className="details">
