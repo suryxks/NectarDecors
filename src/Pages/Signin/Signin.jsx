@@ -16,7 +16,6 @@ export const Signin = () => {
   const loginHandler = async (Logincredentials) => {
     try {
       const { foundUser, encodedToken } = await loginService(Logincredentials);
-      console.log(foundUser,encodedToken)
       setAuthState({
         token: encodedToken,
         userInfo: foundUser,
