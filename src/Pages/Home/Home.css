@@ -1,8 +1,7 @@
 html {
-
+    --cta-light:#fbcfe8;
+    --border:#e5f0f0;
     height: 100%;
-    --cta-light: #fbcfe8;
-    --border: #e5f0f0;
 }
 
 .hero-sec {

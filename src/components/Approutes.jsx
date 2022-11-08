@@ -8,7 +8,6 @@ import {
   Signin,
   Signup
 } from "../Pages";
-import Mockman from "mockman-js";
 import {useAuth} from './../contexts/AuthContext'
 const Approutes = () => {
   return (
@@ -21,7 +20,6 @@ const Approutes = () => {
 			</Route>
       <Route path="/signin" element={<Signin />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/mockman" element={<Mockman />} />
     </Routes>
   );
 };

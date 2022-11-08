@@ -1,5 +1,4 @@
-import React from 'react'
-import { Navbar } from '../../components'
+import React, { useEffect } from 'react'
 import { useCart } from '../../contexts/CartContext'
 import CartCard from '../../components/HorizontalCard/CartCard'
 import { useWishList } from '../../contexts/WishListContext';
@@ -7,13 +6,15 @@ import { Toaster } from 'react-hot-toast';
 import { getTotalPrice } from '../../Utils';
 import './Cart.css'
 const Cart = () => {
-    const { cart: cartList,  updateQuantityOfProduct, removeProduct } = useCart();
+    const { cart: cartList,  updateQuantityOfProduct, removeProduct,getCart } = useCart();
     const {  addToWishList } = useWishList();
     const priceDetails = getTotalPrice(cartList);
-
+    const token = JSON.parse(localStorage.getItem("token"));
+    useEffect(() =>{
+        getCart(token);  
+    },[])
     return (
         <div>
-            <Navbar />
             <Toaster/>
             <h1 className="heading-xl text-center">{`My Cart (${cartList.length})`}</h1>
             <div className="cart">

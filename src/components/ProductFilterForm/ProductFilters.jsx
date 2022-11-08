@@ -1,56 +1,71 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import "./ProductFilters.css";
+import { constants } from "../../Utils/constants";
 export const ProductFilters = ({ filterValues, dispatch }) => {
   const { category, rating, priceRangeSlider } = filterValues;
-
+  const { category_plants,
+    category_walldecor,
+    category_clocks,
+    category_wallshelves,
+    rating_four,
+    rating_three,
+    rating_two,
+    rating_one,
+    price_slider,
+    clear
+  }=constants
   return (
     <aside className="filters">
       <div className="filter-header">
         <h2 className="heading-md text-left ">Filters</h2>
         <button
           className="clear-btn text-sm"
-          onClick={() => dispatch({ type: "CLEAR" })}
+          onClick={() => dispatch({ type: clear })}
         >
           Clear
         </button>
       </div>
-      <div className="filter-wrapper">
+      <div className="filter-wrapper" role="form">
         <h3 className="heading-md text-left active">Category</h3>
         <div className="filter-value filter">
-          <label htmlFor="category">
+          <label htmlFor="plants">
             <input
               type="checkbox"
-              name="category"
+              name="plants"
+              id="plants"
               checked={category.plants}
-              onChange={() => dispatch({ type: "CATEGORY_PLANTS" })}
+              onChange={() => dispatch({ type: category_plants })}
             />{" "}
             Plants
           </label>
-          <label htmlFor="category">
+          <label htmlFor="wallDecor">
             <input
               type="checkbox"
-              name="category"
+              id="wallDecor"
+              name="wallDecor"
               checked={category.wallDecor}
-              onChange={() => dispatch({ type: "CATEGORY_WALLDECOR" })}
+              onChange={() => dispatch({ type: category_walldecor })}
             />{" "}
             Wall decor
           </label>
-          <label htmlFor="category">
+          <label htmlFor="clocks">
             <input
               type="checkbox"
-              name="category"
+              id="clocks"
+              name="clocks"
               checked={category.clocks}
-              onChange={() => dispatch({ type: "CATEGORY_CLOCKS" })}
+              onChange={() => dispatch({ type: category_clocks })}
             />{" "}
             Clocks
           </label>
-          <label htmlFor="category">
+          <label htmlFor="wallShelves">
             <input
               type="checkbox"
-              name="category"
+              name="wallShelves"
+              id="wallShelves"
               checked={category.wallShelves}
-              onChange={() => dispatch({ type: "CATEGORY_WALLSHELVES" })}
+              onChange={() => dispatch({ type: category_wallshelves })}
             />{" "}
             Wall shelves
           </label>
@@ -60,39 +75,43 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
       <div className="filter-wrapper">
         <h3 className="heading-md text-left active">Rating</h3>
         <div className="filter-value filter">
-          <label htmlFor="rating">
+          <label htmlFor="four-rating">
             <input
               type="radio"
               name="rating"
+              id="four-rating"
               checked={rating.fourStars}
-              onChange={() => dispatch({ type: "RATING_FOUR_STARS" })}
+              onChange={() => dispatch({ type: rating_four })}
             />{" "}
             4 and above
           </label>
-          <label htmlFor="rating">
+          <label htmlFor="three-rating">
             <input
               type="radio"
               name="rating"
+              id="three-rating"
               checked={rating.threeStars}
-              onChange={() => dispatch({ type: "RATING_THREE_STARS" })}
+              onChange={() => dispatch({ type: rating_three })}
             />{" "}
             3 and above
           </label>
-          <label htmlFor="rating">
+          <label htmlFor="two-rating">
             <input
               type="radio"
               name="rating"
+              id="two-rating"
               checked={rating.twoStars}
-              onChange={() => dispatch({ type: "RATING_TWO_STARS" })}
+              onChange={() => dispatch({ type: rating_two })}
             />{" "}
             2 and above
           </label>
-          <label htmlFor="rating">
+          <label htmlFor="one-rating">
             <input
               type="radio"
               name="rating"
+              id="one-rating"
               checked={rating.oneStars}
-              onChange={() => dispatch({ type: "RATING_ONE_STAR" })}
+              onChange={() => dispatch({ type: rating_one })}
             />{" "}
             1 and above
           </label>
@@ -112,7 +131,7 @@ export const ProductFilters = ({ filterValues, dispatch }) => {
               value={priceRangeSlider}
               onChange={(e) => {
                 dispatch({
-                  type: "PRICE_SLIDER",
+                  type: price_slider,
                   payload: e.target.value
                 });
               }}

@@ -1,41 +1,48 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest/globals": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "plugin:jest/recommended"
+  ],
+  "overrides": [],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "prettier"
-    ],
-    "overrides": [
-    ],
-    "parserOptions": {
-      "ecmaVersion": 12,
-      "sourceType": "module",
-      "ecmaFeatures": {
-          "jsx": true
-          
-    },
-    "plugins": [
-        "react",
-        "testing-library"
-    ],
+    "plugins": ["react", "testing-library", "jest"],
     "rules": {
-       
-        "react/prop-types": 0,
-          "no-param-reassign": [0, {
-            "props": false
-          }],
-          "prefer-rest-params": 1,
-          "arrow-body-style": 0,
-          "prefer-template": 0,
-          "react/prefer-stateless-function": 1,
-          "react/jsx-no-bind": [0, {
-            "ignoreRefs": false,
-            "allowArrowFunctions": false,
-            "allowBind": true
-          }]
+      "jest/no-disabled-tests": "warn",
+      "jest/no-focused-tests": "error",
+      "jest/no-identical-title": "error",
+      "jest/prefer-to-have-length": "warn",
+      "jest/valid-expect": "error",
+      "react/prop-types": 0,
+      "no-param-reassign": [
+        0,
+        {
+          "props": false
+        }
+      ],
+      "prefer-rest-params": 1,
+      "arrow-body-style": 0,
+      "prefer-template": 0,
+      "react/prefer-stateless-function": 1,
+      "react/jsx-no-bind": [
+        0,
+        {
+          "ignoreRefs": false,
+          "allowArrowFunctions": false,
+          "allowBind": true
+        }
+      ]
     }
-}
+  }
 }

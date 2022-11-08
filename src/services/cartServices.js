@@ -40,7 +40,7 @@ export const removeFromCartService = async (token, id) => {
         console.error(error);
     }
 }
-export const updataProductQuantityService = async (token, id, type) => {
+export const updateProductQuantityService = async (token, id, type) => {
     try {
         const response = await axios.post(`/api/user/cart/${id}`, {
             action: {

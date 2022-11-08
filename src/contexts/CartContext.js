@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, {createContext, useContext, useState} from 'react'
-import {getCartService, addToCartService,removeFromCartService,updataProductQuantityService} from '../services'
+import {getCartService, addToCartService,removeFromCartService,updateProductQuantityService} from '../services'
 const CartContext = createContext(null)
 
 export const CartProvider = ({children}) => {
@@ -8,8 +8,9 @@ export const CartProvider = ({children}) => {
 
   const getCart = async token => {
     try {
-      const data = await getCartService(token)
-      return data.cart
+      const data = await getCartService(token);
+      setCart(data.cart)
+      
     } catch (e) {
       console.error(e)
     }
@@ -33,7 +34,7 @@ export const CartProvider = ({children}) => {
   }
   const updateQuantityOfProduct = async (token, id, type) => {
     try {
-        const data = await updataProductQuantityService(token, id, type);
+        const data = await updateProductQuantityService(token, id, type);
       setCart(data.cart)
     } catch (error) {
         console.error(error);
@@ -41,7 +42,7 @@ export const CartProvider = ({children}) => {
   }
   return (
     <CartContext.Provider
-      value={{cart, addToCart, removeProduct, updateQuantityOfProduct, getCart}}
+      value={{cart, addToCart, removeProduct, updateQuantityOfProduct, getCart,setCart}}
     >
       {children}
     </CartContext.Provider>

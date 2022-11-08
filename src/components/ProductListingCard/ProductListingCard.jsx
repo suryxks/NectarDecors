@@ -1,44 +1,43 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import "./ProductListingCard.css";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import Rating from "@mui/material/Rating";
-import { useWishList } from "../../contexts/WishListContext";
-import toast from "react-hot-toast";
+import React from 'react'
+import './ProductListingCard.css'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import Rating from '@mui/material/Rating'
 export const ProductListingCard = ({
   _id,
-  imageUrl,
-  title,
-  price,
-  discount,
-  description,
-  rating,
-  Originalprice,
   onAddtocart,
   product,
+  onWishListAdd,
+  onWishListRemove,
+  isPresentInWishList,
 }) => {
-  const { wishList, addToWishList, deleteFromWishlist } = useWishList();
-  const token = JSON.parse(localStorage.getItem("token"));
+  const {
+    title,
+    description,
+    price,
+    discount,
+    imageUrl,
+    rating,
+    Originalprice,
+  } = product
   return (
-    <div className="vertical-card" key={_id}>
+    <div className="vertical-card" key={_id} data-testid="product-card">
       <img src={imageUrl} alt={description} className="product-image" />
-      {wishList.find((item) => item._id === _id) ? (
+      {isPresentInWishList ? (
         <FavoriteIcon
           className="wishlist-icon active"
-          onClick={() => {
-            deleteFromWishlist(token, _id);
-            toast.success("item removed from wishlist");
-          }}
+          onClick={onWishListRemove}
+          role="button"
+          data-testid="addedToWishlist"
         />
       ) : (
-        <FavoriteBorderIcon
-          className="wishlist-icon"
-          onClick={() => {
-            addToWishList(token, product);
-            toast.success("item added to wishlist");
-          }}
-        />
+          <FavoriteBorderIcon
+            className="wishlist-icon"
+            onClick={onWishListAdd}
+            role="button"
+            data-testid="notAddedToWishlist"
+          />
       )}
 
       <div className="details">
@@ -62,5 +61,5 @@ export const ProductListingCard = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
