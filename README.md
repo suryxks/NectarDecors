@@ -2,7 +2,7 @@
 E-commerce app for home decors
 ### Tech Stack
 
-React, Mockbee for mock backend ,Jest ,React Testing 
+React, Mockbee for mock backend ,Jest ,React Testing Library
 
 ### [](https://github.com/suryxks/NectarDecors#features)Features
 
